@@ -1,0 +1,47 @@
+language: node_js
+
+node_js:
+  - "9"
+
+# 缓存依赖
+cache:
+  directories:
+    - $HOME/.npm
+
+before_install:
+  - export TZ='Asia/Shanghai' # 更改时区
+  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6B05F25D762E3157
+  - sudo apt update -qq
+  - sudo apt-get install calibre xvfb -y
+  - sudo apt-get install ttf-wqy-*
+  - echo '#!/bin/bash' | sudo tee -a /usr/local/bin/ebook-convert
+  - echo 'Run xvfb-run /usr/bin/ebook-convert $@' | sudo tee -a /usr/local/bin/ebook-convert
+  - echo 'xvfb-run /usr/bin/ebook-convert "$@"' | sudo tee -a /usr/local/bin/ebook-convert
+  - sudo chmod +x /usr/local/bin/ebook-convert
+
+# 依赖安装
+install:
+  - npm install gitbook-cli -g
+  # 安装 gitbook 插件
+  - gitbook install
+
+# 构建脚本
+script:
+    # 自定义输出目录 gitbook build src dest
+  - gitbook build ./ ./docs
+  - gitbook pdf ./ ./learning-book.pdf
+
+# 分支白名单
+branches:
+  only:
+    - master # 只对 master 分支进行构建
+
+# GitHub Pages 部署
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key: $CI_USER_TOKEN
+  file:
+     - learning-book.pdf
+
+
