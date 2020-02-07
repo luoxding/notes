@@ -40,7 +40,6 @@ branches:
 deploy:
   provider: releases
   skip_cleanup: true
-  api_key: $CI_USER_TOKEN
   file:
      - learning-book.pdf
 

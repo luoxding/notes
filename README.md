@@ -2,7 +2,7 @@
 
 
 
-# gitbook
+# gitbook做笔记
 
 ```bash
 gitbook pdf ./ ./note.pdf
