@@ -1,4 +1,4 @@
-# Welcome to MkDocs
+# MkDocs 指南
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
