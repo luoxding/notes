@@ -13,9 +13,9 @@ name: Deploy to Github Pages
           with:
             python-version: 3.x
         - uses: actions/cache@v2
-#         with:
-#           key: ${{ mkdocs }}
-#           path: .cache
+          with:
+            key: ${{ secrets.MKDOCS }}
+            path: .cache
         - run: pip install mkdocs-material
         - run: mkdocs gh-deploy --force
 
