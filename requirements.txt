@@ -26,3 +26,4 @@ mkdocs-material-extensions>=1.0.3
 pygments>=2.12
 pymdown-extensions>=9.4
 mkdocs-awesome-pages-plugin
+mkdocs-i18n
