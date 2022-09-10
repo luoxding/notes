@@ -1,6 +1,6 @@
 # MkDocs 指南检查gh
 
-github secrets.MKDOCS
+github secrets.MKDOCSc
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
