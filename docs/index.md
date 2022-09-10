@@ -1,4 +1,4 @@
-# MkDocs 指南检查
+# MkDocs 指南检查gh
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
