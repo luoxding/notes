@@ -1,2 +1,0 @@
-# intruduction in os
-

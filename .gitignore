@@ -1,2 +1,7 @@
-node_modules
-_book
+# Public output
+site/
+public/
+
+# Docs sources
+#docs/
+test/
