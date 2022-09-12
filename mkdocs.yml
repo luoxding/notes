@@ -1,13 +1,12 @@
-site_name: Noirkelo
+site_name: 我的笔记
 site_description: studyRepo学习笔记
-site_author: Noirkelo
-site_url: https://zh-spike.github.io/studyRepo
-
+site_author: Xingding Luo
+site_url: https://luoxding.github.io/notes/
 # Copyright
-copyright: Copyright &copy; Noirkelo
+copyright: Copyright &copy; 2022 | Xingding Luo
 
-repo_name: 'studyRepo'
-repo_url: 'https://github.com/Noirkelo/studyRepo'
+repo_name: 'notes'
+repo_url: 'https://github.com/luoxding/notes'
 
 theme: 
   name: material
