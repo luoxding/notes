@@ -100,8 +100,8 @@ plugins:
 #需要文件存在，否则警告
 #extra_javascript:
 #    - javascripts/shortcuts.js
-#extra_css:
-#    - stylesheets/extra.css
+extra_css:
+    - stylesheets/extra.css
 
 
 extra:
