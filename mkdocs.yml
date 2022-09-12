@@ -113,9 +113,10 @@ plugins:
       lang: ja
       prebuild_index: true
   - git-revision-date-localized:
-      type: iso_datetime
+      type: datetime
       enable_creation_date: true
       fallback_to_build_date: true
+      timezone: Asia/Shanghai
   - git-revision-date:
       enabled_if_env: CI
 #av:
