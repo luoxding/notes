@@ -22,10 +22,11 @@ jobs:
          #python3 -m pip install mkdocs            # install mkdocs 
          #python3 -m pip install mkdocs-material   # install material theme
           pip install -r requirements.txt # install material theme
-      - name: Build site
-        run: mkdocs build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: $
-          publish_dir: ./site
+          mkdocs gh-deploy --force --clean --verbose
+     #- name: Build site
+     #  run: mkdocs build
+     #- name: Deploy
+     #  uses: peaceiris/actions-gh-pages@v3
+     #  with:
+     #    github_token: $
+     #    publish_dir: ./site
