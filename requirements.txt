@@ -27,3 +27,5 @@ pygments>=2.12
 pymdown-extensions>=9.4
 mkdocs-awesome-pages-plugin
 mkdocs-i18n
+jieba
+mkdocs-git-revision-date-localized-plugin
