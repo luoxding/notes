@@ -26,7 +26,7 @@ theme:
      #primary: 'blue'
      #ccent: 'light blue'
     # Palette toggle for light mode
-    - scheme: light green
+    - scheme: 'light green'
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
