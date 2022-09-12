@@ -9,5 +9,6 @@ then
 else
  git status
  echo "Pushing data to remote server!!!"
- git push -u origin main
+ git push origin main
+#git push -u origin main
 fi
