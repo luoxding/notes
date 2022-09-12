@@ -22,16 +22,20 @@ theme:
     code: 'Fira Mono'
  #palette:
   palette: 
-     #primary: 'blue'
-     #ccent: 'light blue'
     # Palette toggle for light mode
-    - scheme: 'black'
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: indigo
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
 
     # Palette toggle for dark mode
-    - scheme: black
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: blue
       toggle:
         icon: material/weather-night
         name: Switch to light mode
