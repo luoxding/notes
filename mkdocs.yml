@@ -8,6 +8,7 @@ edit_uri: 'edit/main/docs/'
 
 theme:
   name: material
+  language: zh
 # custom_dir: theme
   font:
     text: Red Hat Text
@@ -70,7 +71,9 @@ markdown_extensions:
   - meta
 
 plugins:
+  - git-revision-date-localized
   - search
+      jieba_dict: dict.txt
   - awesome-pages
   - i18n:
       default_language: zh
@@ -156,4 +159,5 @@ extra:
       link: https://rockylinux.org
 
 
-#copyright: Copyright &copy; 2021 The Rocky Enterprise Software Foundation
+copyright: Copyright &copy; 2022 Xingding Luo
+#generator: false
