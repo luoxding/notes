@@ -25,7 +25,7 @@ theme:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: teal
+      primary: light green
       accent: indigo
       toggle:
         icon: material/weather-sunny
@@ -34,7 +34,7 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: teal
+      primary: black
       accent: blue
       toggle:
         icon: material/weather-night
@@ -42,7 +42,7 @@ theme:
 
   icon:
     logo: material/library
-  # Don't include MkDocs' JavaScript
+  # Don't include MkDocs' JavaScript.
   include_search_page: false
   search_index_only: true
 
