@@ -41,7 +41,8 @@ theme:
         name: Switch to light mode
 
   icon:
-    logo: fontawesome/brands/suse
+    logo: logo
+    #logo: fontawesome/brands/suse
    #logo: material/library
   # Don't include MkDocs' JavaScript.
   include_search_page: false
