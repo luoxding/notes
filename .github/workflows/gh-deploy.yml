@@ -13,10 +13,11 @@ jobs:
       - name: Checkout main
         uses: actions/checkout@v2
 
-      - name: Set Timezone
-        uses: szenius/set-timezone@v1.0
+      - name: Get Time
+        id: time
+        uses: JantHsueh/get-time-action@master
         with:
-          timezoneLinux: "Asia/Shanghai"
+          timeZone: 8
 
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master

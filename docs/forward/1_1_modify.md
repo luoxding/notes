@@ -8,3 +8,10 @@
   with:
 	timezoneLinux: "Asia/Shanghai"
 ```
+
+```yml
+      - name: Set Timezone
+        uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: "Asia/Shanghai"
+```
