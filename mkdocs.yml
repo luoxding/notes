@@ -25,8 +25,8 @@ theme:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: light green
-      accent: indigo
+      primary: indigo
+      accent: deep orange
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
@@ -35,13 +35,14 @@ theme:
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
-      accent: blue
+      accent: green
       toggle:
         icon: material/weather-night
         name: Switch to light mode
 
   icon:
-    logo: material/library
+    logo: fontawesome/brands/suse
+   #logo: material/library
   # Don't include MkDocs' JavaScript.
   include_search_page: false
   search_index_only: true
