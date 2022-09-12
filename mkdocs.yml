@@ -15,13 +15,28 @@ theme:
     # - navigation.instant
     - navigation.sections
     - navigation.tabs
+    - navigation.top
   language: 'zh'
   font:
-    text: 'Fira Sans'
+   #text: 'Fira Sans'
+    text: 'Noto Serif CJK SC'
     code: 'Fira Mono'
-  palette:
-    primary: 'blue'
-    accent: 'light blue'
+ #palette:
+  palette: 
+     #primary: 'blue'
+     #ccent: 'light blue'
+    # Palette toggle for light mode
+    - scheme: light green
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
   icon:
     logo: material/library
   # Don't include MkDocs' JavaScript
@@ -37,10 +52,10 @@ extra:
   manifest: 'manifest.webmanifest'
   githash: ''
   social:
-    #- icon: fontawesome/brands/github
-    #  link: https://github.com/zh-Spike
-    #- icon: fontawesome/solid/paper-plane
-    #  link: mailto:<zh-spike@outlook.com>
+    - icon: fontawesome/brands/github
+      link: https://github.com/luoxding
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:<anthony_lambert@live.com>
 
 extra_javascript:
   - '_static/js/extra.js'
@@ -100,6 +115,7 @@ plugins:
       prebuild_index: true
   - git-revision-date-localized:
       type: iso_datetime
+      enable_creation_date: true
       fallback_to_build_date: true
   - git-revision-date:
       enabled_if_env: CI
