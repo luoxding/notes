@@ -25,7 +25,7 @@ theme:
      #primary: 'blue'
      #ccent: 'light blue'
     # Palette toggle for light mode
-    - scheme: 'light green'
+    - scheme: 'black'
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
@@ -117,6 +117,7 @@ plugins:
       enable_creation_date: true
       fallback_to_build_date: true
       timezone: Asia/Shanghai
+      locale: zh
   - git-revision-date:
       enabled_if_env: CI
 #av:
