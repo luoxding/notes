@@ -31,7 +31,7 @@ theme:
         name: Switch to dark mode
 
     # Palette toggle for dark mode
-    - scheme: slate
+    - scheme: black
       toggle:
         icon: material/weather-night
         name: Switch to light mode
