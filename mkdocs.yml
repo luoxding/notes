@@ -71,7 +71,10 @@ markdown_extensions:
   - meta
 
 plugins:
-  - git-revision-date-localized
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+      fallback_to_build_date: true
   - search
      #jieba_dict: dict.txt
   - awesome-pages
