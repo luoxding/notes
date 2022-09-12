@@ -1,9 +1,9 @@
 ---
 site_name: '我的笔记'
-site_url: 'https://docs.rockylinux.org'
+site_url: 'https://luoxding.github.io/notes/'
 #docs_dir: 'docs/docs'
-repo_url: https://github.com/rocky-linux/documentation
-repo_name: rocky-linux/documentation
+repo_url: https://github.com/luoxding/notes
+repo_name: luoxding/notes
 edit_uri: 'edit/main/docs/'
 
 theme:
