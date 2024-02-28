@@ -1,4 +1,6 @@
-# Welcome to MkDocs
+# 首页
+
+# 这是首页 index
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 

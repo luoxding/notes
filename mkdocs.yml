@@ -1,6 +1,7 @@
 site_name: 我的笔记
 site_description: studyRepo学习笔记
-site_author: Xingding Luo
+# site_author: Xingding Luo
+site_author: 罗兴定
 site_url: https://luoxding.github.io/notes/
 # Copyright
 copyright: Copyright &copy; 2022 | Xingding Luo
@@ -60,7 +61,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/luoxding
     - icon: fontawesome/solid/paper-plane
-      link: mailto:<anthony_lambert@live.com>
+      link: mailto:anthony_lambert@live.com
 
 extra_javascript:
   - '_static/js/extra.js'
