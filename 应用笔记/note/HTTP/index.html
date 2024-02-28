@@ -1,0 +1,6932 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="studyRepo学习笔记">
+      
+      
+        <meta name="author" content="罗兴定">
+      
+      
+        <link rel="canonical" href="https://luoxding.github.io/notes/%E5%BA%94%E7%94%A8%E7%AC%94%E8%AE%B0/note/HTTP/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11">
+    
+    
+      
+        <title>HTTP - 我的笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c5ef100.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+CJK+SC:300,300i,400,400i,700,700i%7CFira+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif CJK SC";--md-code-font:"Fira Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../_static/css/extra.css?v=13">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#http" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="我的笔记" class="md-header__button md-logo" aria-label="我的笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            我的笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HTTP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/luoxding/notes" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      首页
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../about/" class="md-tabs__link">
+      关于
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../LaTeX%E7%AC%94%E8%AE%B0/LaTeX%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE/" class="md-tabs__link">
+        LaTeX笔记
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Linux%E7%AC%94%E8%AE%B0/git/" class="md-tabs__link">
+        Linux笔记
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../forward/1_1_modify/" class="md-tabs__link">
+        Forward
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Trilium/Apache%E4%BB%A3%E7%90%86%E5%AE%89%E8%A3%85/" class="md-tabs__link md-tabs__link--active">
+        应用笔记
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="我的笔记" class="md-nav__button md-logo" aria-label="我的笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    我的笔记
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/luoxding/notes" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        首页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        关于
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          LaTeX笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="LaTeX笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          LaTeX笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LaTeX%E7%AC%94%E8%AE%B0/LaTeX%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE/" class="md-nav__link">
+        LaTeX总纲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LaTeX%E7%AC%94%E8%AE%B0/LaTeX%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        LaTeX安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LaTeX%E7%AC%94%E8%AE%B0/LaTeX%E5%AE%8F%E5%8C%85/" class="md-nav__link">
+        LaTeX总纲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LaTeX%E7%AC%94%E8%AE%B0/LaTeX%E6%A0%BC%E5%BC%8F/" class="md-nav__link">
+        LaTeX总纲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LaTeX%E7%AC%94%E8%AE%B0/LaTeX%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        LaTeX笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LaTeX%E7%AC%94%E8%AE%B0/LaTeX%E9%85%8D%E7%BD%AE/" class="md-nav__link">
+        LaTeX配置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LaTeX%E7%AC%94%E8%AE%B0/LaTeX%E9%A2%9C%E8%89%B2/" class="md-nav__link">
+        LaTeX颜色
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LaTeX%E7%AC%94%E8%AE%B0/markdown%E8%A1%A8%E6%A0%BC/" class="md-nav__link">
+        Markdown表格
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LaTeX%E7%AC%94%E8%AE%B0/overleaf/" class="md-nav__link">
+        Overleaf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LaTeX%E7%AC%94%E8%AE%B0/texlive/" class="md-nav__link">
+        Texlive
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Linux笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Linux笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux%E7%AC%94%E8%AE%B0/git/" class="md-nav__link">
+        Git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux%E7%AC%94%E8%AE%B0/scripts/" class="md-nav__link">
+        笔记文件夹体系
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Forward
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Forward" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Forward
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../forward/1_1_modify/" class="md-nav__link">
+        TimeZone
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../forward/Archive/" class="md-nav__link">
+        Archive
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../forward/about/" class="md-nav__link">
+        Imo moribundo clamat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../forward/bin/" class="md-nav__link">
+        Bin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../forward/%E7%94%B5%E7%84%8A/" class="md-nav__link">
+        电焊
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6" type="checkbox" id="__nav_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_6">
+          Posts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Posts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          Posts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../forward/posts/_index/" class="md-nav__link">
+        Blog
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../forward/posts/creating-a-new-theme/" class="md-nav__link">
+        Creating a New Theme
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../forward/posts/goisforlovers/" class="md-nav__link">
+        Goisforlovers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../forward/posts/hugoisforlovers/" class="md-nav__link">
+        Hugoisforlovers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../forward/posts/migrate-from-jekyll/" class="md-nav__link">
+        Migrate to Hugo from Jekyll
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          应用笔记
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="应用笔记" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          应用笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" type="checkbox" id="__nav_6_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_1">
+          Trilium
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Trilium" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Trilium
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/Apache%E4%BB%A3%E7%90%86%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        Apache代理安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/Docker%E5%AE%89%E8%A3%85%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="md-nav__link">
+        Docker安装服务器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/ETAPI/" class="md-nav__link">
+        ETAPI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/Home/" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/Kubernetes%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        Kubernetes安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/Markdown/" class="md-nav__link">
+        Markdown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/Nav/" class="md-nav__link">
+        导航
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/Nginx%E4%BB%A3%E7%90%86%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        Nginx代理安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/SUMMARY/" class="md-nav__link">
+        Summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/TLS%E9%85%8D%E7%BD%AE/" class="md-nav__link">
+        TLS配置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93%E7%9A%84%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        个人知识库的模式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E4%B8%BB%E9%A2%98/" class="md-nav__link">
+        主题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        书笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E4%B9%A6%E7%AD%BE/" class="md-nav__link">
+        书签
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E4%BA%8B%E4%BB%B6/" class="md-nav__link">
+        事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        代码笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8/" class="md-nav__link">
+        任务管理器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E4%BD%93%E9%87%8D%E8%BF%BD%E8%B8%AA%E5%99%A8/" class="md-nav__link">
+        体重追踪器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E4%BF%9D%E5%AD%98%E7%9A%84%E6%90%9C%E7%B4%A2/" class="md-nav__link">
+        保存的搜索
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%85%8B%E9%9A%86%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        克隆笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%85%B1%E4%BA%AB/" class="md-nav__link">
+        共享
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84%E5%9B%BE/" class="md-nav__link">
+        关系映射图
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%8D%87%E7%BA%A7Trilium/" class="md-nav__link">
+        升级Trilium
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%8D%B0%E8%B1%A1%E7%AC%94%E8%AE%B0%E5%AF%BC%E5%85%A5/" class="md-nav__link">
+        印象笔记导入
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%8E%8B%E7%BC%A9%E5%8C%85%E5%AE%89%E8%A3%85%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="md-nav__link">
+        压缩包安装服务器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%8F%97%E4%BF%9D%E6%8A%A4%E7%9A%84%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        受保护的笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%8F%AA%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        只读笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%90%8C%E6%AD%A5/" class="md-nav__link">
+        同步
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%9B%BE%E7%89%87/" class="md-nav__link">
+        图片
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%A4%87%E4%BB%BD/" class="md-nav__link">
+        备份
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%B1%9E%E6%80%A7/" class="md-nav__link">
+        属性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%B1%9E%E6%80%A7%E7%BB%A7%E6%89%BF/" class="md-nav__link">
+        属性继承
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%B7%A5%E4%BD%9C%E5%8C%BA/" class="md-nav__link">
+        工作区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        常见问题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E5%BD%92%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        归档笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="md-nav__link">
+        手动安装服务器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%8E%92%E5%BA%8F/" class="md-nav__link">
+        排序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%8F%90%E5%8D%87%E5%B1%9E%E6%80%A7/" class="md-nav__link">
+        提升属性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%90%9C%E7%B4%A2/" class="md-nav__link">
+        搜索
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4/" class="md-nav__link">
+        故障排除
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        数据目录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%96%87%E6%9C%AC%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        文本笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" class="md-nav__link">
+        文本编辑器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        文档
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%97%A5%E5%BF%97%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        日志笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%97%A7%E6%90%9C%E7%B4%A2/" class="md-nav__link">
+        旧搜索
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        服务器安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+        树的概念
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%A0%91%E7%BB%93%E6%9E%84%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        树结构操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%A1%8C%E9%9D%A2%E7%AB%AF%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        桌面端安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        模板
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E6%BC%94%E7%A4%BA%E6%88%AA%E5%9B%BE/" class="md-nav__link">
+        演示截图
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E7%94%BB%E5%B8%83%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        画布笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E7%A7%BB%E5%8A%A8%E5%89%8D%E7%AB%AF/" class="md-nav__link">
+        移动前端
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E7%AC%94%E8%AE%B0%E4%BF%AE%E8%AE%A2/" class="md-nav__link">
+        笔记修订
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E7%AC%94%E8%AE%B0%E5%AF%BC%E8%88%AA/" class="md-nav__link">
+        笔记导航
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E7%AC%94%E8%AE%B0%E6%8C%82%E8%B5%B7/" class="md-nav__link">
+        笔记挂起
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E7%AC%94%E8%AE%B0%E6%98%A0%E5%B0%84%E5%9B%BE/" class="md-nav__link">
+        笔记映射图
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E7%BD%91%E9%A1%B5%E5%89%AA%E5%88%87%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        网页剪切程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E8%84%9A%E6%9C%AC/" class="md-nav__link">
+        脚本
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E8%84%9A%E6%9C%ACAPI/" class="md-nav__link">
+        脚本API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B0%8F%E9%83%A8%E4%BB%B6/" class="md-nav__link">
+        自定义小部件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        自定义请求处理程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E8%AF%91%E8%80%85%E6%B3%A8/" class="md-nav__link">
+        译者注
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E9%93%BE%E6%8E%A5/" class="md-nav__link">
+        链接
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="md-nav__link">
+        键盘快捷键
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E9%AB%98%E7%BA%A7%E7%94%A8%E4%BE%8B/" class="md-nav__link">
+        高级用例
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Trilium/%E9%BB%98%E8%AE%A4%E7%AC%94%E8%AE%B0%E6%A0%87%E9%A2%98/" class="md-nav__link">
+        默认笔记标题
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" type="checkbox" id="__nav_6_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2">
+          Note
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Note" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Note
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.1%20%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/" class="md-nav__link">
+        10.1 斐波那契数列
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.2%20%E7%9F%A9%E5%BD%A2%E8%A6%86%E7%9B%96/" class="md-nav__link">
+        10.2 矩形覆盖
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.3%20%E8%B7%B3%E5%8F%B0%E9%98%B6/" class="md-nav__link">
+        10.3 跳台阶
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.4%20%E5%8F%98%E6%80%81%E8%B7%B3%E5%8F%B0%E9%98%B6/" class="md-nav__link">
+        10.4 变态跳台阶
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/" class="md-nav__link">
+        11. 旋转数组的最小数字
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.%20%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" class="md-nav__link">
+        12. 矩阵中的路径
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.%20%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/" class="md-nav__link">
+        13. 机器人的运动范围
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.%20%E5%89%AA%E7%BB%B3%E5%AD%90/" class="md-nav__link">
+        14. 剪绳子
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%201%20%E7%9A%84%E4%B8%AA%E6%95%B0/" class="md-nav__link">
+        15. 二进制中 1 的个数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.%20%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/" class="md-nav__link">
+        16. 数值的整数次方
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.%20%E6%89%93%E5%8D%B0%E4%BB%8E%201%20%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84%20n%20%E4%BD%8D%E6%95%B0/" class="md-nav__link">
+        17. 打印从 1 到最大的 n 位数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.1%20%E5%9C%A8%20O%281%29%20%E6%97%B6%E9%97%B4%E5%86%85%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E8%8A%82%E7%82%B9/" class="md-nav__link">
+        18.1 在 O(1) 时间内删除链表节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18.2%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E7%BB%93%E7%82%B9/" class="md-nav__link">
+        18.2 删除链表中重复的结点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19.%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/" class="md-nav__link">
+        19. 正则表达式匹配
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20.%20%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%80%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        20. 表示数值的字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21.%20%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/" class="md-nav__link">
+        21. 调整数组顺序使奇数位于偶数前面
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22.%20%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%AC%20K%20%E4%B8%AA%E7%BB%93%E7%82%B9/" class="md-nav__link">
+        22. 链表中倒数第 K 个结点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23.%20%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E7%BB%93%E7%82%B9/" class="md-nav__link">
+        23. 链表中环的入口结点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="md-nav__link">
+        24. 反转链表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25.%20%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" class="md-nav__link">
+        25. 合并两个排序的链表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26.%20%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        26. 树的子结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" class="md-nav__link">
+        27. 二叉树的镜像
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28.%20%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91/" class="md-nav__link">
+        28. 对称的二叉树
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29.%20%E9%A1%BA%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        29. 顺时针打印矩阵
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/" class="md-nav__link">
+        3. 数组中重复的数字
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30.%20%E5%8C%85%E5%90%AB%20min%20%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88/" class="md-nav__link">
+        30. 包含 min 函数的栈
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31.%20%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97/" class="md-nav__link">
+        31. 栈的压入、弹出序列
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.1%20%E4%BB%8E%E4%B8%8A%E5%BE%80%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" class="md-nav__link">
+        32.1 从上往下打印二叉树
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.2%20%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%A0%91%E6%89%93%E5%8D%B0%E6%88%90%E5%A4%9A%E8%A1%8C/" class="md-nav__link">
+        32.2 把二叉树打印成多行
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32.3%20%E6%8C%89%E4%B9%8B%E5%AD%97%E5%BD%A2%E9%A1%BA%E5%BA%8F%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" class="md-nav__link">
+        32.3 按之字形顺序打印二叉树
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33.%20%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97/" class="md-nav__link">
+        33. 二叉搜索树的后序遍历序列
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/" class="md-nav__link">
+        34. 二叉树中和为某一值的路径
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35.%20%E5%A4%8D%E6%9D%82%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6/" class="md-nav__link">
+        35. 复杂链表的复制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36.%20%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" class="md-nav__link">
+        36. 二叉搜索树与双向链表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37.%20%E5%BA%8F%E5%88%97%E5%8C%96%E4%BA%8C%E5%8F%89%E6%A0%91/" class="md-nav__link">
+        37. 序列化二叉树
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38.%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" class="md-nav__link">
+        38. 字符串的排列
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/" class="md-nav__link">
+        39. 数组中出现次数超过一半的数字
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        4. 二维数组中的查找
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40.%20%E6%9C%80%E5%B0%8F%E7%9A%84%20K%20%E4%B8%AA%E6%95%B0/" class="md-nav__link">
+        40. 最小的 K 个数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../41.1%20%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%AD%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/" class="md-nav__link">
+        41.1 数据流中的中位数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../41.2%20%E5%AD%97%E7%AC%A6%E6%B5%81%E4%B8%AD%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%B8%8D%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%97%E7%AC%A6/" class="md-nav__link">
+        41.2 字符流中第一个不重复的字符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../42.%20%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/" class="md-nav__link">
+        42. 连续子数组的最大和
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../43.%20%E4%BB%8E%201%20%E5%88%B0%20n%20%E6%95%B4%E6%95%B0%E4%B8%AD%201%20%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/" class="md-nav__link">
+        43. 从 1 到 n 整数中 1 出现的次数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../44.%20%E6%95%B0%E5%AD%97%E5%BA%8F%E5%88%97%E4%B8%AD%E7%9A%84%E6%9F%90%E4%B8%80%E4%BD%8D%E6%95%B0%E5%AD%97/" class="md-nav__link">
+        44. 数字序列中的某一位数字
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../45.%20%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0/" class="md-nav__link">
+        45. 把数组排成最小的数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../46.%20%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        46. 把数字翻译成字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../47.%20%E7%A4%BC%E7%89%A9%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC/" class="md-nav__link">
+        47. 礼物的最大价值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../48.%20%E6%9C%80%E9%95%BF%E4%B8%8D%E5%90%AB%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        48. 最长不含重复字符的子字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../49.%20%E4%B8%91%E6%95%B0/" class="md-nav__link">
+        49. 丑数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC/" class="md-nav__link">
+        5. 替换空格
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../50.%20%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E5%AD%97%E7%AC%A6%E4%BD%8D%E7%BD%AE/" class="md-nav__link">
+        50. 第一个只出现一次的字符位置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../51.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9/" class="md-nav__link">
+        51. 数组中的逆序对
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../52.%20%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E7%BB%93%E7%82%B9/" class="md-nav__link">
+        52. 两个链表的第一个公共结点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../53.%20%E6%95%B0%E5%AD%97%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0/" class="md-nav__link">
+        53. 数字在排序数组中出现的次数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../54.%20%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91%E7%9A%84%E7%AC%AC%20K%20%E4%B8%AA%E7%BB%93%E7%82%B9/" class="md-nav__link">
+        54. 二叉查找树的第 K 个结点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../55.1%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" class="md-nav__link">
+        55.1 二叉树的深度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../55.2%20%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" class="md-nav__link">
+        55.2 平衡二叉树
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../56.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" class="md-nav__link">
+        56. 数组中只出现一次的数字
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../57.1%20%E5%92%8C%E4%B8%BA%20S%20%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%AD%97/" class="md-nav__link">
+        57.1 和为 S 的两个数字
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../57.2%20%E5%92%8C%E4%B8%BA%20S%20%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%AD%A3%E6%95%B0%E5%BA%8F%E5%88%97/" class="md-nav__link">
+        57.2 和为 S 的连续正数序列
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../58.1%20%E7%BF%BB%E8%BD%AC%E5%8D%95%E8%AF%8D%E9%A1%BA%E5%BA%8F%E5%88%97/" class="md-nav__link">
+        58.1 翻转单词顺序列
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../58.2%20%E5%B7%A6%E6%97%8B%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        58.2 左旋转字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../59.%20%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/" class="md-nav__link">
+        59. 滑动窗口的最大值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8/" class="md-nav__link">
+        6. 从尾到头打印链表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../60.%20n%20%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/" class="md-nav__link">
+        60. n 个骰子的点数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../61.%20%E6%89%91%E5%85%8B%E7%89%8C%E9%A1%BA%E5%AD%90/" class="md-nav__link">
+        61. 扑克牌顺子
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../62.%20%E5%9C%86%E5%9C%88%E4%B8%AD%E6%9C%80%E5%90%8E%E5%89%A9%E4%B8%8B%E7%9A%84%E6%95%B0/" class="md-nav__link">
+        62. 圆圈中最后剩下的数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../63.%20%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E5%A4%A7%E5%88%A9%E6%B6%A6/" class="md-nav__link">
+        63. 股票的最大利润
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../64.%20%E6%B1%82%201%2B2%2B3%2B...%2Bn/" class="md-nav__link">
+        64. 求 1+2+3+...+n
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../65.%20%E4%B8%8D%E7%94%A8%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E5%81%9A%E5%8A%A0%E6%B3%95/" class="md-nav__link">
+        65. 不用加减乘除做加法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../66.%20%E6%9E%84%E5%BB%BA%E4%B9%98%E7%A7%AF%E6%95%B0%E7%BB%84/" class="md-nav__link">
+        66. 构建乘积数组
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../67.%20%E6%8A%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%90%E6%95%B4%E6%95%B0/" class="md-nav__link">
+        67. 把字符串转换成整数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../68.%20%E6%A0%91%E4%B8%AD%E4%B8%A4%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E4%BD%8E%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" class="md-nav__link">
+        68. 树中两个节点的最低公共祖先
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/" class="md-nav__link">
+        7. 重建二叉树
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E7%BB%93%E7%82%B9/" class="md-nav__link">
+        8. 二叉树的下一个结点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/" class="md-nav__link">
+        9. 用两个栈实现队列
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Docker/" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Git/" class="md-nav__link">
+        Git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          HTTP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        HTTP
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    一 、基础概念
+  </a>
+  
+    <nav class="md-nav" aria-label="一 、基础概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    请求和响应报文
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    URL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http_1" class="md-nav__link">
+    二、HTTP 方法
+  </a>
+  
+    <nav class="md-nav" aria-label="二、HTTP 方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    GET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#head" class="md-nav__link">
+    HEAD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    POST
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#put" class="md-nav__link">
+    PUT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch" class="md-nav__link">
+    PATCH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    DELETE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    OPTIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect" class="md-nav__link">
+    CONNECT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trace" class="md-nav__link">
+    TRACE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http_2" class="md-nav__link">
+    三、HTTP 状态码
+  </a>
+  
+    <nav class="md-nav" aria-label="三、HTTP 状态码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1xx" class="md-nav__link">
+    1XX 信息
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2xx" class="md-nav__link">
+    2XX 成功
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3xx" class="md-nav__link">
+    3XX 重定向
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4xx" class="md-nav__link">
+    4XX 客户端错误
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5xx" class="md-nav__link">
+    5XX 服务器错误
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http_3" class="md-nav__link">
+    四、HTTP 首部
+  </a>
+  
+    <nav class="md-nav" aria-label="四、HTTP 首部">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    通用首部字段
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    请求首部字段
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    响应首部字段
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    实体首部字段
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    五、具体应用
+  </a>
+  
+    <nav class="md-nav" aria-label="五、具体应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    连接管理
+  </a>
+  
+    <nav class="md-nav" aria-label="连接管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 短连接与长连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 流水线
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie" class="md-nav__link">
+    Cookie
+  </a>
+  
+    <nav class="md-nav" aria-label="Cookie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1. 用途
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2. 创建过程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 分类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 作用域
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-javascript" class="md-nav__link">
+    5. JavaScript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-httponly" class="md-nav__link">
+    6. HttpOnly
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-secure" class="md-nav__link">
+    7. Secure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-session" class="md-nav__link">
+    8. Session
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-cookie" class="md-nav__link">
+    9. 浏览器禁用 Cookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-cookie-session" class="md-nav__link">
+    10. Cookie 与 Session 选择
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    缓存
+  </a>
+  
+    <nav class="md-nav" aria-label="缓存">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    1. 优点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    2. 实现方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cache-control" class="md-nav__link">
+    3. Cache-Control
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    4. 缓存验证
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    内容协商
+  </a>
+  
+    <nav class="md-nav" aria-label="内容协商">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    1. 类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vary" class="md-nav__link">
+    2. Vary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    内容编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    范围请求
+  </a>
+  
+    <nav class="md-nav" aria-label="范围请求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-range" class="md-nav__link">
+    1. Range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-accept-ranges" class="md-nav__link">
+    2. Accept-Ranges
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3. 响应状态码
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    分块传输编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    多部分对象集合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    虚拟主机
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    通信数据转发
+  </a>
+  
+    <nav class="md-nav" aria-label="通信数据转发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    1. 代理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    2. 网关
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    3. 隧道
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#https" class="md-nav__link">
+    六、HTTPS
+  </a>
+  
+    <nav class="md-nav" aria-label="六、HTTPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    加密
+  </a>
+  
+    <nav class="md-nav" aria-label="加密">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_5" class="md-nav__link">
+    1. 对称密钥加密
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    2.非对称密钥加密
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-https" class="md-nav__link">
+    3. HTTPS 采用的加密方式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    认证
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    完整性保护
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#https_1" class="md-nav__link">
+    HTTPS 的缺点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http20" class="md-nav__link">
+    七、HTTP/2.0
+  </a>
+  
+    <nav class="md-nav" aria-label="七、HTTP/2.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http1x" class="md-nav__link">
+    HTTP/1.x 缺陷
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    二进制分帧层
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    服务端推送
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    首部压缩
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http11" class="md-nav__link">
+    八、HTTP/1.1 新特性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-post" class="md-nav__link">
+    九、GET 和 POST 比较
+  </a>
+  
+    <nav class="md-nav" aria-label="九、GET 和 POST 比较">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    作用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    安全
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    幂等性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    可缓存
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xmlhttprequest" class="md-nav__link">
+    XMLHttpRequest
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    参考资料
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java%20IO/" class="md-nav__link">
+        Java IO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java%20%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        Java 基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java%20%E5%AE%B9%E5%99%A8/" class="md-nav__link">
+        Java 容器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java%20%E5%B9%B6%E5%8F%91/" class="md-nav__link">
+        Java 并发
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="md-nav__link">
+        Java 虚拟机
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        Leetcode 题解 - 二分查找
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E4%BD%8D%E8%BF%90%E7%AE%97/" class="md-nav__link">
+        Leetcode 题解 - 位运算
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%88%86%E6%B2%BB/" class="md-nav__link">
+        Leetcode 题解 - 分治
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        Leetcode 题解 - 动态规划
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%8F%8C%E6%8C%87%E9%92%88/" class="md-nav__link">
+        Leetcode 题解 - 双指针
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%93%88%E5%B8%8C%E8%A1%A8/" class="md-nav__link">
+        Leetcode 题解 - 哈希表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%9B%BE/" class="md-nav__link">
+        Leetcode 题解 - 图
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        Leetcode 题解 - 字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E6%8E%92%E5%BA%8F/" class="md-nav__link">
+        Leetcode 题解 - 排序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E6%90%9C%E7%B4%A2/" class="md-nav__link">
+        Leetcode 题解 - 搜索
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E6%95%B0%E5%AD%A6/" class="md-nav__link">
+        Leetcode 题解 - 数学
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E6%95%B0%E7%BB%84%E4%B8%8E%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        Leetcode 题解 - 数组与矩阵
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" class="md-nav__link">
+        Leetcode 题解 - 栈和队列
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E6%A0%91/" class="md-nav__link">
+        Leetcode 题解 - 树
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        Leetcode 题解
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E8%B4%AA%E5%BF%83%E6%80%9D%E6%83%B3/" class="md-nav__link">
+        Leetcode 题解 - 贪心思想
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E9%93%BE%E8%A1%A8/" class="md-nav__link">
+        Leetcode 题解 - 链表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Leetcode%20%E9%A2%98%E8%A7%A3/" class="md-nav__link">
+        Leetcode 题解
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Linux/" class="md-nav__link">
+        Linux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MySQL/" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQL%20%E7%BB%83%E4%B9%A0/" class="md-nav__link">
+        SQL 练习
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQL%20%E8%AF%AD%E6%B3%95/" class="md-nav__link">
+        SQL 语法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQL/" class="md-nav__link">
+        SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Socket/" class="md-nav__link">
+        Socket
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BB%A3%E7%A0%81%E5%8F%AF%E8%AF%BB%E6%80%A7/" class="md-nav__link">
+        代码可读性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E8%A7%84%E8%8C%83/" class="md-nav__link">
+        代码风格规范
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%88%86%E5%B8%83%E5%BC%8F/" class="md-nav__link">
+        分布式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%89%91%E6%8C%87%20Offer%20%E9%A2%98%E8%A7%A3%20-%20%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        剑指 Offer 题解
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%89%91%E6%8C%87%20offer%20%E9%A2%98%E8%A7%A3/" class="md-nav__link">
+        剑指 offer 题解
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%94%BB%E5%87%BB%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+        攻击技术
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/" class="md-nav__link">
+        数据库系统原理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        构建工具
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        正则表达式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" class="md-nav__link">
+        消息队列
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AE%97%E6%B3%95%20-%20%E5%85%B6%E5%AE%83/" class="md-nav__link">
+        算法 - 其它
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AE%97%E6%B3%95%20-%20%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="md-nav__link">
+        算法 - 并查集
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AE%97%E6%B3%95%20-%20%E6%8E%92%E5%BA%8F/" class="md-nav__link">
+        算法 - 排序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AE%97%E6%B3%95%20-%20%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" class="md-nav__link">
+        算法 - 栈和队列
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AE%97%E6%B3%95%20-%20%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        算法目录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AE%97%E6%B3%95%20-%20%E7%AC%A6%E5%8F%B7%E8%A1%A8/" class="md-nav__link">
+        算法 - 符号表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AE%97%E6%B3%95%20-%20%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" class="md-nav__link">
+        算法 - 算法分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        系统设计基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BC%93%E5%AD%98/" class="md-nav__link">
+        缓存
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20-%20%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        计算机操作系统 - 内存管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20-%20%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        计算机操作系统 - 概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20-%20%E6%AD%BB%E9%94%81/" class="md-nav__link">
+        计算机操作系统 - 死锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20-%20%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        计算机操作系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20-%20%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        计算机操作系统 - 设备管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20-%20%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        计算机操作系统 - 进程管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20-%20%E9%93%BE%E6%8E%A5/" class="md-nav__link">
+        计算机操作系统 - 链接
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        计算机操作系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%20%E4%BC%A0%E8%BE%93%E5%B1%82/" class="md-nav__link">
+        计算机网络 - 传输层
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%20%E5%BA%94%E7%94%A8%E5%B1%82/" class="md-nav__link">
+        计算机网络 - 应用层
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%20%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        计算机网络 - 概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%20%E7%89%A9%E7%90%86%E5%B1%82/" class="md-nav__link">
+        计算机网络 - 物理层
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%20%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        计算机网络
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%20%E7%BD%91%E7%BB%9C%E5%B1%82/" class="md-nav__link">
+        计算机网络 - 网络层
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%20%E9%93%BE%E8%B7%AF%E5%B1%82/" class="md-nav__link">
+        计算机网络 - 链路层
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        计算机网络
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20%20-%20%E5%8D%95%E4%BE%8B/" class="md-nav__link">
+        设计模式    单例
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E4%B8%AD%E4%BB%8B%E8%80%85/" class="md-nav__link">
+        设计模式   中介者
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E4%BA%AB%E5%85%83/" class="md-nav__link">
+        设计模式   享元
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E4%BB%A3%E7%90%86/" class="md-nav__link">
+        设计模式   代理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        设计模式   原型模式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" class="md-nav__link">
+        设计模式   命令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%A4%87%E5%BF%98%E5%BD%95/" class="md-nav__link">
+        设计模式   备忘录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%A4%96%E8%A7%82/" class="md-nav__link">
+        设计模式   外观
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        设计模式   工厂方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82/" class="md-nav__link">
+        设计模式   抽象工厂
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E6%A1%A5%E6%8E%A5/" class="md-nav__link">
+        设计模式   桥接
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        设计模式   模板方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E7%8A%B6%E6%80%81/" class="md-nav__link">
+        设计模式   状态
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        设计模式   生成器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        设计模式目录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E7%9B%AE%E5%BD%951/" class="md-nav__link">
+        一、前言
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E7%A9%BA%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        设计模式   空对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E7%AD%96%E7%95%A5/" class="md-nav__link">
+        设计模式   策略
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/" class="md-nav__link">
+        设计模式   简单工厂
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E7%BB%84%E5%90%88/" class="md-nav__link">
+        设计模式   组合
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E8%A3%85%E9%A5%B0/" class="md-nav__link">
+        设计模式   装饰
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E8%A7%82%E5%AF%9F%E8%80%85/" class="md-nav__link">
+        设计模式   观察者
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E8%A7%A3%E9%87%8A%E5%99%A8/" class="md-nav__link">
+        设计模式   解释器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E8%AE%BF%E9%97%AE%E8%80%85/" class="md-nav__link">
+        设计模式   访问者
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E8%B4%A3%E4%BB%BB%E9%93%BE/" class="md-nav__link">
+        设计模式   责任链
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E8%BF%AD%E4%BB%A3%E5%99%A8/" class="md-nav__link">
+        设计模式   迭代器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E9%80%82%E9%85%8D%E5%99%A8/" class="md-nav__link">
+        设计模式   适配器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        设计模式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%9B%86%E7%BE%A4/" class="md-nav__link">
+        集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" class="md-nav__link">
+        面向对象思想
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    一 、基础概念
+  </a>
+  
+    <nav class="md-nav" aria-label="一 、基础概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    请求和响应报文
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    URL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http_1" class="md-nav__link">
+    二、HTTP 方法
+  </a>
+  
+    <nav class="md-nav" aria-label="二、HTTP 方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    GET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#head" class="md-nav__link">
+    HEAD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    POST
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#put" class="md-nav__link">
+    PUT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch" class="md-nav__link">
+    PATCH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    DELETE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    OPTIONS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect" class="md-nav__link">
+    CONNECT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trace" class="md-nav__link">
+    TRACE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http_2" class="md-nav__link">
+    三、HTTP 状态码
+  </a>
+  
+    <nav class="md-nav" aria-label="三、HTTP 状态码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1xx" class="md-nav__link">
+    1XX 信息
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2xx" class="md-nav__link">
+    2XX 成功
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3xx" class="md-nav__link">
+    3XX 重定向
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4xx" class="md-nav__link">
+    4XX 客户端错误
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5xx" class="md-nav__link">
+    5XX 服务器错误
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http_3" class="md-nav__link">
+    四、HTTP 首部
+  </a>
+  
+    <nav class="md-nav" aria-label="四、HTTP 首部">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    通用首部字段
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    请求首部字段
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    响应首部字段
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    实体首部字段
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    五、具体应用
+  </a>
+  
+    <nav class="md-nav" aria-label="五、具体应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    连接管理
+  </a>
+  
+    <nav class="md-nav" aria-label="连接管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 短连接与长连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 流水线
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie" class="md-nav__link">
+    Cookie
+  </a>
+  
+    <nav class="md-nav" aria-label="Cookie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1. 用途
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2. 创建过程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 分类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 作用域
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-javascript" class="md-nav__link">
+    5. JavaScript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-httponly" class="md-nav__link">
+    6. HttpOnly
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-secure" class="md-nav__link">
+    7. Secure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-session" class="md-nav__link">
+    8. Session
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-cookie" class="md-nav__link">
+    9. 浏览器禁用 Cookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-cookie-session" class="md-nav__link">
+    10. Cookie 与 Session 选择
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    缓存
+  </a>
+  
+    <nav class="md-nav" aria-label="缓存">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    1. 优点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    2. 实现方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cache-control" class="md-nav__link">
+    3. Cache-Control
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    4. 缓存验证
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    内容协商
+  </a>
+  
+    <nav class="md-nav" aria-label="内容协商">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    1. 类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vary" class="md-nav__link">
+    2. Vary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    内容编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    范围请求
+  </a>
+  
+    <nav class="md-nav" aria-label="范围请求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-range" class="md-nav__link">
+    1. Range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-accept-ranges" class="md-nav__link">
+    2. Accept-Ranges
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3. 响应状态码
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    分块传输编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    多部分对象集合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    虚拟主机
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    通信数据转发
+  </a>
+  
+    <nav class="md-nav" aria-label="通信数据转发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    1. 代理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    2. 网关
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    3. 隧道
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#https" class="md-nav__link">
+    六、HTTPS
+  </a>
+  
+    <nav class="md-nav" aria-label="六、HTTPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    加密
+  </a>
+  
+    <nav class="md-nav" aria-label="加密">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_5" class="md-nav__link">
+    1. 对称密钥加密
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    2.非对称密钥加密
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-https" class="md-nav__link">
+    3. HTTPS 采用的加密方式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    认证
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    完整性保护
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#https_1" class="md-nav__link">
+    HTTPS 的缺点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http20" class="md-nav__link">
+    七、HTTP/2.0
+  </a>
+  
+    <nav class="md-nav" aria-label="七、HTTP/2.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http1x" class="md-nav__link">
+    HTTP/1.x 缺陷
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    二进制分帧层
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    服务端推送
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    首部压缩
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http11" class="md-nav__link">
+    八、HTTP/1.1 新特性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-post" class="md-nav__link">
+    九、GET 和 POST 比较
+  </a>
+  
+    <nav class="md-nav" aria-label="九、GET 和 POST 比较">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    作用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    安全
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    幂等性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    可缓存
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xmlhttprequest" class="md-nav__link">
+    XMLHttpRequest
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    参考资料
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/luoxding/notes/edit/master/docs/应用笔记/note/HTTP.md" title="编辑此页" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="http">HTTP<a class="headerlink" href="#http" title="Permanent link">&para;</a></h1>
+<!-- GFM-TOC -->
+<ul>
+<li><a href="#http">HTTP</a><ul>
+<li><a href="#一-基础概念">一 、基础概念</a><ul>
+<li><a href="#请求和响应报文">请求和响应报文</a></li>
+<li><a href="#url">URL</a></li>
+</ul>
+</li>
+<li><a href="#二http-方法">二、HTTP 方法</a><ul>
+<li><a href="#get">GET</a></li>
+<li><a href="#head">HEAD</a></li>
+<li><a href="#post">POST</a></li>
+<li><a href="#put">PUT</a></li>
+<li><a href="#patch">PATCH</a></li>
+<li><a href="#delete">DELETE</a></li>
+<li><a href="#options">OPTIONS</a></li>
+<li><a href="#connect">CONNECT</a></li>
+<li><a href="#trace">TRACE</a></li>
+</ul>
+</li>
+<li><a href="#三http-状态码">三、HTTP 状态码</a><ul>
+<li><a href="#1xx-信息">1XX 信息</a></li>
+<li><a href="#2xx-成功">2XX 成功</a></li>
+<li><a href="#3xx-重定向">3XX 重定向</a></li>
+<li><a href="#4xx-客户端错误">4XX 客户端错误</a></li>
+<li><a href="#5xx-服务器错误">5XX 服务器错误</a></li>
+</ul>
+</li>
+<li><a href="#四http-首部">四、HTTP 首部</a><ul>
+<li><a href="#通用首部字段">通用首部字段</a></li>
+<li><a href="#请求首部字段">请求首部字段</a></li>
+<li><a href="#响应首部字段">响应首部字段</a></li>
+<li><a href="#实体首部字段">实体首部字段</a></li>
+</ul>
+</li>
+<li><a href="#五具体应用">五、具体应用</a><ul>
+<li><a href="#连接管理">连接管理</a></li>
+<li><a href="#cookie">Cookie</a></li>
+<li><a href="#缓存">缓存</a></li>
+<li><a href="#内容协商">内容协商</a></li>
+<li><a href="#内容编码">内容编码</a></li>
+<li><a href="#范围请求">范围请求</a></li>
+<li><a href="#分块传输编码">分块传输编码</a></li>
+<li><a href="#多部分对象集合">多部分对象集合</a></li>
+<li><a href="#虚拟主机">虚拟主机</a></li>
+<li><a href="#通信数据转发">通信数据转发</a></li>
+</ul>
+</li>
+<li><a href="#六https">六、HTTPS</a><ul>
+<li><a href="#加密">加密</a></li>
+<li><a href="#认证">认证</a></li>
+<li><a href="#完整性保护">完整性保护</a></li>
+<li><a href="#https-的缺点">HTTPS 的缺点</a></li>
+</ul>
+</li>
+<li><a href="#七http20">七、HTTP/2.0</a><ul>
+<li><a href="#http1x-缺陷">HTTP/1.x 缺陷</a></li>
+<li><a href="#二进制分帧层">二进制分帧层</a></li>
+<li><a href="#服务端推送">服务端推送</a></li>
+<li><a href="#首部压缩">首部压缩</a></li>
+</ul>
+</li>
+<li><a href="#八http11-新特性">八、HTTP/1.1 新特性</a></li>
+<li><a href="#九get-和-post-比较">九、GET 和 POST 比较</a><ul>
+<li><a href="#作用">作用</a></li>
+<li><a href="#参数">参数</a></li>
+<li><a href="#安全">安全</a></li>
+<li><a href="#幂等性">幂等性</a></li>
+<li><a href="#可缓存">可缓存</a></li>
+<li><a href="#xmlhttprequest">XMLHttpRequest</a></li>
+</ul>
+</li>
+<li><a href="#参考资料">参考资料</a></li>
+</ul>
+</li>
+</ul>
+<!-- GFM-TOC -->
+
+<h2 id="_1">一 、基础概念<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">请求和响应报文<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>客户端发送一个请求报文给服务器，服务器根据请求报文中的信息进行处理，并将处理结果放入响应报文中返回给客户端。</p>
+<p>请求报文结构：</p>
+<ul>
+<li>第一行是包含了请求方法、URL、协议版本；</li>
+<li>接下来的多行都是请求首部 Header，每个首部都有一个首部名称，以及对应的值。</li>
+<li>一个空行用来分隔首部和内容主体 Body</li>
+<li>最后是请求的内容主体</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>GET http://www.example.com/ HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8
+Cache-Control: max-age=0
+Host: www.example.com
+If-Modified-Since: Thu, 17 Oct 2019 07:18:26 GMT
+If-None-Match: &quot;3147526947+gzip&quot;
+Proxy-Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 xxx
+
+param1=1&amp;param2=2
+</code></pre></div>
+</td></tr></table>
+<p>响应报文结构：</p>
+<ul>
+<li>第一行包含协议版本、状态码以及描述，最常见的是 200 OK 表示请求成功了</li>
+<li>接下来多行也是首部内容</li>
+<li>一个空行分隔首部和内容主体</li>
+<li>最后是响应的内容主体</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>HTTP/1.1 200 OK
+Age: 529651
+Cache-Control: max-age=604800
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Length: 648
+Content-Type: text/html; charset=UTF-8
+Date: Mon, 02 Nov 2020 17:53:39 GMT
+Etag: &quot;3147526947+ident+gzip&quot;
+Expires: Mon, 09 Nov 2020 17:53:39 GMT
+Keep-Alive: timeout=4
+Last-Modified: Thu, 17 Oct 2019 07:18:26 GMT
+Proxy-Connection: keep-alive
+Server: ECS (sjc/16DF)
+Vary: Accept-Encoding
+X-Cache: HIT
+
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Example Domain&lt;/title&gt;
+    // 省略... 
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+</td></tr></table>
+<h3 id="url">URL<a class="headerlink" href="#url" title="Permanent link">&para;</a></h3>
+<p>HTTP 使用 URL（ <strong>U</strong> niform <strong>R</strong>esource <strong>L</strong>ocator，统一资源定位符）来定位资源，它是  URI（<strong>U</strong>niform <strong>R</strong>esource <strong>I</strong>dentifier，统一资源标识符）的子集，URL 在 URI 的基础上增加了定位能力。URI 除了包含 URL，还包含 URN（Uniform Resource Name，统一资源名称），它只是用来定义一个资源的名称，并不具备定位该资源的能力。例如 urn:isbn:0451450523 用来定义一个书籍名称，但是却没有表示怎么找到这本书。</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/8441b2c4-dca7-4d6b-8efb-f22efccaf331.png" width="500px"> </div>
+<p><br></p>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/统一资源标志符">wikipedia：统一资源标志符</a></li>
+<li><a href="https://en.wikipedia.org/wiki/URL">wikipedia: URL</a></li>
+<li><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.2">rfc2616：3.2.2 http URL</a></li>
+<li><a href="https://stackoverflow.com/questions/176264/what-is-the-difference-between-a-uri-a-url-and-a-urn">What is the difference between a URI, a URL and a URN?</a></li>
+</ul>
+<h2 id="http_1">二、HTTP 方法<a class="headerlink" href="#http_1" title="Permanent link">&para;</a></h2>
+<p>客户端发送的   <strong>请求报文</strong>   第一行为请求行，包含了方法字段。</p>
+<h3 id="get">GET<a class="headerlink" href="#get" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>获取资源</p>
+</blockquote>
+<p>当前网络请求中，绝大部分使用的是 GET 方法。</p>
+<h3 id="head">HEAD<a class="headerlink" href="#head" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>获取报文首部</p>
+</blockquote>
+<p>和 GET 方法类似，但是不返回报文实体主体部分。</p>
+<p>主要用于确认 URL 的有效性以及资源更新的日期时间等。</p>
+<h3 id="post">POST<a class="headerlink" href="#post" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>传输实体主体</p>
+</blockquote>
+<p>POST 主要用来传输数据，而 GET 主要用来获取资源。</p>
+<p>更多 POST 与 GET 的比较请见第九章。</p>
+<h3 id="put">PUT<a class="headerlink" href="#put" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>上传文件</p>
+</blockquote>
+<p>由于自身不带验证机制，任何人都可以上传文件，因此存在安全性问题，一般不使用该方法。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PUT /new.html HTTP/1.1
+Host: example.com
+Content-type: text/html
+Content-length: 16
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>New File<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="patch">PATCH<a class="headerlink" href="#patch" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>对资源进行部分修改</p>
+</blockquote>
+<p>PUT 也可以用于修改资源，但是只能完全替代原始资源，PATCH 允许部分修改。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PATCH /file.txt HTTP/1.1
+Host: www.example.com
+Content-Type: application/example
+If-Match: &quot;e0023aa4e&quot;
+Content-Length: 100
+
+[description of changes]
+</code></pre></div>
+</td></tr></table>
+<h3 id="delete">DELETE<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>删除文件</p>
+</blockquote>
+<p>与 PUT 功能相反，并且同样不带验证机制。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>DELETE /file.html HTTP/1.1
+</code></pre></div>
+</td></tr></table>
+<h3 id="options">OPTIONS<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>查询支持的方法</p>
+</blockquote>
+<p>查询指定的 URL 能够支持的方法。</p>
+<p>会返回 <code>Allow: GET, POST, HEAD, OPTIONS</code> 这样的内容。</p>
+<h3 id="connect">CONNECT<a class="headerlink" href="#connect" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>要求在与代理服务器通信时建立隧道</p>
+</blockquote>
+<p>使用 SSL（Secure Sockets Layer，安全套接层）和 TLS（Transport Layer Security，传输层安全）协议把通信内容加密后经网络隧道传输。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>CONNECT www.example.com:443 HTTP/1.1
+</code></pre></div>
+</td></tr></table>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/dc00f70e-c5c8-4d20-baf1-2d70014a97e3.jpg" width=""/> </div>
+<p><br></p>
+<h3 id="trace">TRACE<a class="headerlink" href="#trace" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>追踪路径</p>
+</blockquote>
+<p>服务器会将通信路径返回给客户端。</p>
+<p>发送请求时，在 Max-Forwards 首部字段中填入数值，每经过一个服务器就会减 1，当数值为 0 时就停止传输。</p>
+<p>通常不会使用 TRACE，并且它容易受到 XST 攻击（Cross-Site Tracing，跨站追踪）。</p>
+<ul>
+<li><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">rfc2616：9 Method Definitions</a></li>
+</ul>
+<h2 id="http_2">三、HTTP 状态码<a class="headerlink" href="#http_2" title="Permanent link">&para;</a></h2>
+<p>服务器返回的   <strong>响应报文</strong>   中第一行为状态行，包含了状态码以及原因短语，用来告知客户端请求的结果。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">状态码</th>
+<th style="text-align: center;">类别</th>
+<th style="text-align: center;">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1XX</td>
+<td style="text-align: center;">Informational（信息性状态码）</td>
+<td style="text-align: center;">接收的请求正在处理</td>
+</tr>
+<tr>
+<td style="text-align: center;">2XX</td>
+<td style="text-align: center;">Success（成功状态码）</td>
+<td style="text-align: center;">请求正常处理完毕</td>
+</tr>
+<tr>
+<td style="text-align: center;">3XX</td>
+<td style="text-align: center;">Redirection（重定向状态码）</td>
+<td style="text-align: center;">需要进行附加操作以完成请求</td>
+</tr>
+<tr>
+<td style="text-align: center;">4XX</td>
+<td style="text-align: center;">Client Error（客户端错误状态码）</td>
+<td style="text-align: center;">服务器无法处理请求</td>
+</tr>
+<tr>
+<td style="text-align: center;">5XX</td>
+<td style="text-align: center;">Server Error（服务器错误状态码）</td>
+<td style="text-align: center;">服务器处理请求出错</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1xx">1XX 信息<a class="headerlink" href="#1xx" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>100 Continue</strong>  ：表明到目前为止都很正常，客户端可以继续发送请求或者忽略这个响应。</li>
+</ul>
+<h3 id="2xx">2XX 成功<a class="headerlink" href="#2xx" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>200 OK</strong>  </p>
+</li>
+<li>
+<p><strong>204 No Content</strong>  ：请求已经成功处理，但是返回的响应报文不包含实体的主体部分。一般在只需要从客户端往服务器发送信息，而不需要返回数据时使用。</p>
+</li>
+<li>
+<p><strong>206 Partial Content</strong>  ：表示客户端进行了范围请求，响应报文包含由 Content-Range 指定范围的实体内容。</p>
+</li>
+</ul>
+<h3 id="3xx">3XX 重定向<a class="headerlink" href="#3xx" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>301 Moved Permanently</strong>  ：永久性重定向</p>
+</li>
+<li>
+<p><strong>302 Found</strong>  ：临时性重定向</p>
+</li>
+<li>
+<p><strong>303 See Other</strong>  ：和 302 有着相同的功能，但是 303 明确要求客户端应该采用 GET 方法获取资源。</p>
+</li>
+<li>
+<p>注：虽然 HTTP 协议规定 301、302 状态下重定向时不允许把 POST 方法改成 GET 方法，但是大多数浏览器都会在 301、302 和 303 状态下的重定向把 POST 方法改成 GET 方法。</p>
+</li>
+<li>
+<p><strong>304 Not Modified</strong>  ：如果请求报文首部包含一些条件，例如：If-Match，If-Modified-Since，If-None-Match，If-Range，If-Unmodified-Since，如果不满足条件，则服务器会返回 304 状态码。</p>
+</li>
+<li>
+<p><strong>307 Temporary Redirect</strong>  ：临时重定向，与 302 的含义类似，但是 307 要求浏览器不会把重定向请求的 POST 方法改成 GET 方法。</p>
+</li>
+</ul>
+<h3 id="4xx">4XX 客户端错误<a class="headerlink" href="#4xx" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>400 Bad Request</strong>  ：请求报文中存在语法错误。</p>
+</li>
+<li>
+<p><strong>401 Unauthorized</strong>  ：该状态码表示发送的请求需要有认证信息（BASIC 认证、DIGEST 认证）。如果之前已进行过一次请求，则表示用户认证失败。</p>
+</li>
+<li>
+<p><strong>403 Forbidden</strong>  ：请求被拒绝。</p>
+</li>
+<li>
+<p><strong>404 Not Found</strong>  </p>
+</li>
+</ul>
+<h3 id="5xx">5XX 服务器错误<a class="headerlink" href="#5xx" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>500 Internal Server Error</strong>  ：服务器正在执行请求时发生错误。</p>
+</li>
+<li>
+<p><strong>503 Service Unavailable</strong>  ：服务器暂时处于超负载或正在进行停机维护，现在无法处理请求。</p>
+</li>
+</ul>
+<h2 id="http_3">四、HTTP 首部<a class="headerlink" href="#http_3" title="Permanent link">&para;</a></h2>
+<p>有 4 种类型的首部字段：通用首部字段、请求首部字段、响应首部字段和实体首部字段。</p>
+<p>各种首部字段及其含义如下（不需要全记，仅供查阅）：</p>
+<h3 id="_3">通用首部字段<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">首部字段名</th>
+<th style="text-align: center;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Cache-Control</td>
+<td style="text-align: center;">控制缓存的行为</td>
+</tr>
+<tr>
+<td style="text-align: center;">Connection</td>
+<td style="text-align: center;">控制不再转发给代理的首部字段、管理持久连接</td>
+</tr>
+<tr>
+<td style="text-align: center;">Date</td>
+<td style="text-align: center;">创建报文的日期时间</td>
+</tr>
+<tr>
+<td style="text-align: center;">Pragma</td>
+<td style="text-align: center;">报文指令</td>
+</tr>
+<tr>
+<td style="text-align: center;">Trailer</td>
+<td style="text-align: center;">报文末端的首部一览</td>
+</tr>
+<tr>
+<td style="text-align: center;">Transfer-Encoding</td>
+<td style="text-align: center;">指定报文主体的传输编码方式</td>
+</tr>
+<tr>
+<td style="text-align: center;">Upgrade</td>
+<td style="text-align: center;">升级为其他协议</td>
+</tr>
+<tr>
+<td style="text-align: center;">Via</td>
+<td style="text-align: center;">代理服务器的相关信息</td>
+</tr>
+<tr>
+<td style="text-align: center;">Warning</td>
+<td style="text-align: center;">错误通知</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">请求首部字段<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">首部字段名</th>
+<th style="text-align: center;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Accept</td>
+<td style="text-align: center;">用户代理可处理的媒体类型</td>
+</tr>
+<tr>
+<td style="text-align: center;">Accept-Charset</td>
+<td style="text-align: center;">优先的字符集</td>
+</tr>
+<tr>
+<td style="text-align: center;">Accept-Encoding</td>
+<td style="text-align: center;">优先的内容编码</td>
+</tr>
+<tr>
+<td style="text-align: center;">Accept-Language</td>
+<td style="text-align: center;">优先的语言（自然语言）</td>
+</tr>
+<tr>
+<td style="text-align: center;">Authorization</td>
+<td style="text-align: center;">Web 认证信息</td>
+</tr>
+<tr>
+<td style="text-align: center;">Expect</td>
+<td style="text-align: center;">期待服务器的特定行为</td>
+</tr>
+<tr>
+<td style="text-align: center;">From</td>
+<td style="text-align: center;">用户的电子邮箱地址</td>
+</tr>
+<tr>
+<td style="text-align: center;">Host</td>
+<td style="text-align: center;">请求资源所在服务器</td>
+</tr>
+<tr>
+<td style="text-align: center;">If-Match</td>
+<td style="text-align: center;">比较实体标记（ETag）</td>
+</tr>
+<tr>
+<td style="text-align: center;">If-Modified-Since</td>
+<td style="text-align: center;">比较资源的更新时间</td>
+</tr>
+<tr>
+<td style="text-align: center;">If-None-Match</td>
+<td style="text-align: center;">比较实体标记（与 If-Match 相反）</td>
+</tr>
+<tr>
+<td style="text-align: center;">If-Range</td>
+<td style="text-align: center;">资源未更新时发送实体 Byte 的范围请求</td>
+</tr>
+<tr>
+<td style="text-align: center;">If-Unmodified-Since</td>
+<td style="text-align: center;">比较资源的更新时间（与 If-Modified-Since 相反）</td>
+</tr>
+<tr>
+<td style="text-align: center;">Max-Forwards</td>
+<td style="text-align: center;">最大传输逐跳数</td>
+</tr>
+<tr>
+<td style="text-align: center;">Proxy-Authorization</td>
+<td style="text-align: center;">代理服务器要求客户端的认证信息</td>
+</tr>
+<tr>
+<td style="text-align: center;">Range</td>
+<td style="text-align: center;">实体的字节范围请求</td>
+</tr>
+<tr>
+<td style="text-align: center;">Referer</td>
+<td style="text-align: center;">对请求中 URI 的原始获取方</td>
+</tr>
+<tr>
+<td style="text-align: center;">TE</td>
+<td style="text-align: center;">传输编码的优先级</td>
+</tr>
+<tr>
+<td style="text-align: center;">User-Agent</td>
+<td style="text-align: center;">HTTP 客户端程序的信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">响应首部字段<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">首部字段名</th>
+<th style="text-align: center;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Accept-Ranges</td>
+<td style="text-align: center;">是否接受字节范围请求</td>
+</tr>
+<tr>
+<td style="text-align: center;">Age</td>
+<td style="text-align: center;">推算资源创建经过时间</td>
+</tr>
+<tr>
+<td style="text-align: center;">ETag</td>
+<td style="text-align: center;">资源的匹配信息</td>
+</tr>
+<tr>
+<td style="text-align: center;">Location</td>
+<td style="text-align: center;">令客户端重定向至指定 URI</td>
+</tr>
+<tr>
+<td style="text-align: center;">Proxy-Authenticate</td>
+<td style="text-align: center;">代理服务器对客户端的认证信息</td>
+</tr>
+<tr>
+<td style="text-align: center;">Retry-After</td>
+<td style="text-align: center;">对再次发起请求的时机要求</td>
+</tr>
+<tr>
+<td style="text-align: center;">Server</td>
+<td style="text-align: center;">HTTP 服务器的安装信息</td>
+</tr>
+<tr>
+<td style="text-align: center;">Vary</td>
+<td style="text-align: center;">代理服务器缓存的管理信息</td>
+</tr>
+<tr>
+<td style="text-align: center;">WWW-Authenticate</td>
+<td style="text-align: center;">服务器对客户端的认证信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">实体首部字段<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">首部字段名</th>
+<th style="text-align: center;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Allow</td>
+<td style="text-align: center;">资源可支持的 HTTP 方法</td>
+</tr>
+<tr>
+<td style="text-align: center;">Content-Encoding</td>
+<td style="text-align: center;">实体主体适用的编码方式</td>
+</tr>
+<tr>
+<td style="text-align: center;">Content-Language</td>
+<td style="text-align: center;">实体主体的自然语言</td>
+</tr>
+<tr>
+<td style="text-align: center;">Content-Length</td>
+<td style="text-align: center;">实体主体的大小</td>
+</tr>
+<tr>
+<td style="text-align: center;">Content-Location</td>
+<td style="text-align: center;">替代对应资源的 URI</td>
+</tr>
+<tr>
+<td style="text-align: center;">Content-MD5</td>
+<td style="text-align: center;">实体主体的报文摘要</td>
+</tr>
+<tr>
+<td style="text-align: center;">Content-Range</td>
+<td style="text-align: center;">实体主体的位置范围</td>
+</tr>
+<tr>
+<td style="text-align: center;">Content-Type</td>
+<td style="text-align: center;">实体主体的媒体类型</td>
+</tr>
+<tr>
+<td style="text-align: center;">Expires</td>
+<td style="text-align: center;">实体主体过期的日期时间</td>
+</tr>
+<tr>
+<td style="text-align: center;">Last-Modified</td>
+<td style="text-align: center;">资源的最后修改日期时间</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">五、具体应用<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="_8">连接管理<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/HTTP1_x_Connections.png" width="800"/> </div>
+<p><br></p>
+<h4 id="1">1. 短连接与长连接<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p>当浏览器访问一个包含多张图片的 HTML 页面时，除了请求访问的 HTML 页面资源，还会请求图片资源。如果每进行一次 HTTP 通信就要新建一个 TCP 连接，那么开销会很大。</p>
+<p>长连接只需要建立一次 TCP 连接就能进行多次 HTTP 通信。</p>
+<ul>
+<li>从 HTTP/1.1 开始默认是长连接的，如果要断开连接，需要由客户端或者服务器端提出断开，使用 <code>Connection : close</code>；</li>
+<li>在 HTTP/1.1 之前默认是短连接的，如果需要使用长连接，则使用 <code>Connection : Keep-Alive</code>。</li>
+</ul>
+<h4 id="2">2. 流水线<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p>默认情况下，HTTP 请求是按顺序发出的，下一个请求只有在当前请求收到响应之后才会被发出。由于受到网络延迟和带宽的限制，在下一个请求被发送到服务器之前，可能需要等待很长时间。</p>
+<p>流水线是在同一条长连接上连续发出请求，而不用等待响应返回，这样可以减少延迟。</p>
+<h3 id="cookie">Cookie<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h3>
+<p>HTTP 协议是无状态的，主要是为了让 HTTP 协议尽可能简单，使得它能够处理大量事务。HTTP/1.1 引入 Cookie 来保存状态信息。</p>
+<p>Cookie 是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器之后向同一服务器再次发起请求时被携带上，用于告知服务端两个请求是否来自同一浏览器。由于之后每次请求都会需要携带 Cookie 数据，因此会带来额外的性能开销（尤其是在移动环境下）。</p>
+<p>Cookie 曾一度用于客户端数据的存储，因为当时并没有其它合适的存储办法而作为唯一的存储手段，但现在随着现代浏览器开始支持各种各样的存储方式，Cookie 渐渐被淘汰。新的浏览器 API 已经允许开发者直接将数据存储到本地，如使用 Web storage API（本地存储和会话存储）或 IndexedDB。</p>
+<h4 id="1_1">1. 用途<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）</li>
+<li>个性化设置（如用户自定义设置、主题等）</li>
+<li>浏览器行为跟踪（如跟踪分析用户行为等）</li>
+</ul>
+<h4 id="2_1">2. 创建过程<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
+<p>服务器发送的响应报文包含 Set-Cookie 首部字段，客户端得到响应报文后把 Cookie 内容保存到浏览器中。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>HTTP/1.0 200 OK
+Content-type: text/html
+Set-Cookie: yummy_cookie=choco
+Set-Cookie: tasty_cookie=strawberry
+
+[page content]
+</code></pre></div>
+</td></tr></table>
+<p>客户端之后对同一个服务器发送请求时，会从浏览器中取出 Cookie 信息并通过 Cookie 请求首部字段发送给服务器。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>GET /sample_page.html HTTP/1.1
+Host: www.example.org
+Cookie: yummy_cookie=choco; tasty_cookie=strawberry
+</code></pre></div>
+</td></tr></table>
+<h4 id="3">3. 分类<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>会话期 Cookie：浏览器关闭之后它会被自动删除，也就是说它仅在会话期内有效。</li>
+<li>持久性 Cookie：指定过期时间（Expires）或有效期（max-age）之后就成为了持久性的 Cookie。</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
+</code></pre></div>
+</td></tr></table>
+<h4 id="4">4. 作用域<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
+<p>Domain 标识指定了哪些主机可以接受 Cookie。如果不指定，默认为当前文档的主机（不包含子域名）。如果指定了 Domain，则一般包含子域名。例如，如果设置 Domain=mozilla.org，则 Cookie 也包含在子域名中（如 developer.mozilla.org）。</p>
+<p>Path 标识指定了主机下的哪些路径可以接受 Cookie（该 URL 路径必须存在于请求 URL 中）。以字符 %x2F ("/") 作为路径分隔符，子路径也会被匹配。例如，设置 Path=/docs，则以下地址都会匹配：</p>
+<ul>
+<li>/docs</li>
+<li>/docs/Web/</li>
+<li>/docs/Web/HTTP</li>
+</ul>
+<h4 id="5-javascript">5. JavaScript<a class="headerlink" href="#5-javascript" title="Permanent link">&para;</a></h4>
+<p>浏览器通过 <code>document.cookie</code> 属性可创建新的 Cookie，也可通过该属性访问非 HttpOnly 标记的 Cookie。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>document.cookie = &quot;yummy_cookie=choco&quot;;
+document.cookie = &quot;tasty_cookie=strawberry&quot;;
+console.log(document.cookie);
+</code></pre></div>
+</td></tr></table>
+<h4 id="6-httponly">6. HttpOnly<a class="headerlink" href="#6-httponly" title="Permanent link">&para;</a></h4>
+<p>标记为 HttpOnly 的 Cookie 不能被 JavaScript 脚本调用。跨站脚本攻击 (XSS) 常常使用 JavaScript 的 <code>document.cookie</code> API 窃取用户的 Cookie 信息，因此使用 HttpOnly 标记可以在一定程度上避免 XSS 攻击。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
+</code></pre></div>
+</td></tr></table>
+<h4 id="7-secure">7. Secure<a class="headerlink" href="#7-secure" title="Permanent link">&para;</a></h4>
+<p>标记为 Secure 的 Cookie 只能通过被 HTTPS 协议加密过的请求发送给服务端。但即便设置了 Secure 标记，敏感信息也不应该通过 Cookie 传输，因为 Cookie 有其固有的不安全性，Secure 标记也无法提供确实的安全保障。</p>
+<h4 id="8-session">8. Session<a class="headerlink" href="#8-session" title="Permanent link">&para;</a></h4>
+<p>除了可以将用户信息通过 Cookie 存储在用户浏览器中，也可以利用 Session 存储在服务器端，存储在服务器端的信息更加安全。</p>
+<p>Session 可以存储在服务器上的文件、数据库或者内存中。也可以将 Session 存储在 Redis 这种内存型数据库中，效率会更高。</p>
+<p>使用 Session 维护用户登录状态的过程如下：</p>
+<ul>
+<li>用户进行登录时，用户提交包含用户名和密码的表单，放入 HTTP 请求报文中；</li>
+<li>服务器验证该用户名和密码，如果正确则把用户信息存储到 Redis 中，它在 Redis 中的 Key 称为 Session ID；</li>
+<li>服务器返回的响应报文的 Set-Cookie 首部字段包含了这个 Session ID，客户端收到响应报文之后将该 Cookie 值存入浏览器中；</li>
+<li>客户端之后对同一个服务器进行请求时会包含该 Cookie 值，服务器收到之后提取出 Session ID，从 Redis 中取出用户信息，继续之前的业务操作。</li>
+</ul>
+<p>应该注意 Session ID 的安全性问题，不能让它被恶意攻击者轻易获取，那么就不能产生一个容易被猜到的 Session ID 值。此外，还需要经常重新生成 Session ID。在对安全性要求极高的场景下，例如转账等操作，除了使用 Session 管理用户状态之外，还需要对用户进行重新验证，比如重新输入密码，或者使用短信验证码等方式。</p>
+<h4 id="9-cookie">9. 浏览器禁用 Cookie<a class="headerlink" href="#9-cookie" title="Permanent link">&para;</a></h4>
+<p>此时无法使用 Cookie 来保存用户信息，只能使用 Session。除此之外，不能再将 Session ID 存放到 Cookie 中，而是使用 URL 重写技术，将 Session ID 作为 URL 的参数进行传递。</p>
+<h4 id="10-cookie-session">10. Cookie 与 Session 选择<a class="headerlink" href="#10-cookie-session" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Cookie 只能存储 ASCII 码字符串，而 Session 则可以存储任何类型的数据，因此在考虑数据复杂性时首选 Session；</li>
+<li>Cookie 存储在浏览器中，容易被恶意查看。如果非要将一些隐私数据存在 Cookie 中，可以将 Cookie 值进行加密，然后在服务器进行解密；</li>
+<li>对于大型网站，如果用户所有的信息都存储在 Session 中，那么开销是非常大的，因此不建议将所有的用户信息都存储到 Session 中。</li>
+</ul>
+<h3 id="_9">缓存<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="1_2">1. 优点<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>缓解服务器压力；</li>
+<li>降低客户端获取资源的延迟：缓存通常位于内存中，读取缓存的速度更快。并且缓存服务器在地理位置上也有可能比源服务器来得近，例如浏览器缓存。</li>
+</ul>
+<h4 id="2_2">2. 实现方法<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>让代理服务器进行缓存；</li>
+<li>让客户端浏览器进行缓存。</li>
+</ul>
+<h4 id="3-cache-control">3. Cache-Control<a class="headerlink" href="#3-cache-control" title="Permanent link">&para;</a></h4>
+<p>HTTP/1.1 通过 Cache-Control 首部字段来控制缓存。</p>
+<p><strong>3.1 禁止进行缓存</strong>  </p>
+<p>no-store 指令规定不能对请求或响应的任何一部分进行缓存。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Cache-Control: no-store
+</code></pre></div>
+</td></tr></table>
+<p><strong>3.2 强制确认缓存</strong>  </p>
+<p>no-cache 指令规定缓存服务器需要先向源服务器验证缓存资源的有效性，只有当缓存资源有效时才能使用该缓存对客户端的请求进行响应。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Cache-Control: no-cache
+</code></pre></div>
+</td></tr></table>
+<p><strong>3.3 私有缓存和公共缓存</strong>  </p>
+<p>private 指令规定了将资源作为私有缓存，只能被单独用户使用，一般存储在用户浏览器中。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Cache-Control: private
+</code></pre></div>
+</td></tr></table>
+<p>public 指令规定了将资源作为公共缓存，可以被多个用户使用，一般存储在代理服务器中。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Cache-Control: public
+</code></pre></div>
+</td></tr></table>
+<p><strong>3.4 缓存过期机制</strong>  </p>
+<p>max-age 指令出现在请求报文，并且缓存资源的缓存时间小于该指令指定的时间，那么就能接受该缓存。</p>
+<p>max-age 指令出现在响应报文，表示缓存资源在缓存服务器中保存的时间。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Cache-Control: max-age=31536000
+</code></pre></div>
+</td></tr></table>
+<p>Expires 首部字段也可以用于告知缓存服务器该资源什么时候会过期。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Expires: Wed, 04 Jul 2012 08:26:05 GMT
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>在 HTTP/1.1 中，会优先处理 max-age 指令；</li>
+<li>在 HTTP/1.0 中，max-age 指令会被忽略掉。</li>
+</ul>
+<h4 id="4_1">4. 缓存验证<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h4>
+<p>需要先了解 ETag 首部字段的含义，它是资源的唯一标识。URL 不能唯一表示资源，例如 <code>http://www.google.com/</code> 有中文和英文两个资源，只有 ETag 才能对这两个资源进行唯一标识。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ETag: &quot;82e22293907ce725faf67773957acd12&quot;
+</code></pre></div>
+</td></tr></table>
+<p>可以将缓存资源的 ETag 值放入 If-None-Match 首部，服务器收到该请求后，判断缓存资源的 ETag 值和资源的最新 ETag 值是否一致，如果一致则表示缓存资源有效，返回 304 Not Modified。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>If-None-Match: &quot;82e22293907ce725faf67773957acd12&quot;
+</code></pre></div>
+</td></tr></table>
+<p>Last-Modified 首部字段也可以用于缓存验证，它包含在源服务器发送的响应报文中，指示源服务器对资源的最后修改时间。但是它是一种弱校验器，因为只能精确到一秒，所以它通常作为 ETag 的备用方案。如果响应首部字段里含有这个信息，客户端可以在后续的请求中带上 If-Modified-Since 来验证缓存。服务器只在所请求的资源在给定的日期时间之后对内容进行过修改的情况下才会将资源返回，状态码为 200 OK。如果请求的资源从那时起未经修改，那么返回一个不带有实体主体的 304 Not Modified 响应报文。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Last-Modified: Wed, 21 Oct 2015 07:28:00 GMT
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>If-Modified-Since: Wed, 21 Oct 2015 07:28:00 GMT
+</code></pre></div>
+</td></tr></table>
+<h3 id="_10">内容协商<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>通过内容协商返回最合适的内容，例如根据浏览器的默认语言选择返回中文界面还是英文界面。</p>
+<h4 id="1_3">1. 类型<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h4>
+<p><strong>1.1 服务端驱动型</strong>  </p>
+<p>客户端设置特定的 HTTP 首部字段，例如 Accept、Accept-Charset、Accept-Encoding、Accept-Language，服务器根据这些字段返回特定的资源。</p>
+<p>它存在以下问题：</p>
+<ul>
+<li>服务器很难知道客户端浏览器的全部信息；</li>
+<li>客户端提供的信息相当冗长（HTTP/2 协议的首部压缩机制缓解了这个问题），并且存在隐私风险（HTTP 指纹识别技术）；</li>
+<li>给定的资源需要返回不同的展现形式，共享缓存的效率会降低，而服务器端的实现会越来越复杂。</li>
+</ul>
+<p><strong>1.2 代理驱动型</strong>  </p>
+<p>服务器返回 300 Multiple Choices 或者 406 Not Acceptable，客户端从中选出最合适的那个资源。</p>
+<h4 id="2-vary">2. Vary<a class="headerlink" href="#2-vary" title="Permanent link">&para;</a></h4>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Vary: Accept-Language
+</code></pre></div>
+</td></tr></table>
+<p>在使用内容协商的情况下，只有当缓存服务器中的缓存满足内容协商条件时，才能使用该缓存，否则应该向源服务器请求该资源。</p>
+<p>例如，一个客户端发送了一个包含 Accept-Language 首部字段的请求之后，源服务器返回的响应包含 <code>Vary: Accept-Language</code> 内容，缓存服务器对这个响应进行缓存之后，在客户端下一次访问同一个 URL 资源，并且 Accept-Language 与缓存中的对应的值相同时才会返回该缓存。</p>
+<h3 id="_11">内容编码<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>内容编码将实体主体进行压缩，从而减少传输的数据量。</p>
+<p>常用的内容编码有：gzip、compress、deflate、identity。</p>
+<p>浏览器发送 Accept-Encoding 首部，其中包含有它所支持的压缩算法，以及各自的优先级。服务器则从中选择一种，使用该算法对响应的消息主体进行压缩，并且发送 Content-Encoding 首部来告知浏览器它选择了哪一种算法。由于该内容协商过程是基于编码类型来选择资源的展现形式的，响应报文的 Vary 首部字段至少要包含 Content-Encoding。</p>
+<h3 id="_12">范围请求<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>如果网络出现中断，服务器只发送了一部分数据，范围请求可以使得客户端只请求服务器未发送的那部分数据，从而避免服务器重新发送所有数据。</p>
+<h4 id="1-range">1. Range<a class="headerlink" href="#1-range" title="Permanent link">&para;</a></h4>
+<p>在请求报文中添加 Range 首部字段指定请求的范围。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>GET /z4d4kWk.jpg HTTP/1.1
+Host: i.imgur.com
+Range: bytes=0-1023
+</code></pre></div>
+</td></tr></table>
+<p>请求成功的话服务器返回的响应包含 206 Partial Content 状态码。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>HTTP/1.1 206 Partial Content
+Content-Range: bytes 0-1023/146515
+Content-Length: 1024
+...
+(binary content)
+</code></pre></div>
+</td></tr></table>
+<h4 id="2-accept-ranges">2. Accept-Ranges<a class="headerlink" href="#2-accept-ranges" title="Permanent link">&para;</a></h4>
+<p>响应首部字段 Accept-Ranges 用于告知客户端是否能处理范围请求，可以处理使用 bytes，否则使用 none。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Accept-Ranges: bytes
+</code></pre></div>
+</td></tr></table>
+<h4 id="3_1">3. 响应状态码<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>在请求成功的情况下，服务器会返回 206 Partial Content 状态码。</li>
+<li>在请求的范围越界的情况下，服务器会返回 416 Requested Range Not Satisfiable 状态码。</li>
+<li>在不支持范围请求的情况下，服务器会返回 200 OK 状态码。</li>
+</ul>
+<h3 id="_13">分块传输编码<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>Chunked Transfer Encoding，可以把数据分割成多块，让浏览器逐步显示页面。</p>
+<h3 id="_14">多部分对象集合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>一份报文主体内可含有多种类型的实体同时发送，每个部分之间用 boundary 字段定义的分隔符进行分隔，每个部分都可以有首部字段。</p>
+<p>例如，上传多个表单时可以使用如下方式：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Content-Type: multipart/form-data; boundary=AaB03x
+
+--AaB03x
+Content-Disposition: form-data; name=&quot;submit-name&quot;
+
+Larry
+--AaB03x
+Content-Disposition: form-data; name=&quot;files&quot;; filename=&quot;file1.txt&quot;
+Content-Type: text/plain
+
+... contents of file1.txt ...
+--AaB03x--
+</code></pre></div>
+</td></tr></table>
+<h3 id="_15">虚拟主机<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>HTTP/1.1 使用虚拟主机技术，使得一台服务器拥有多个域名，并且在逻辑上可以看成多个服务器。</p>
+<h3 id="_16">通信数据转发<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h4 id="1_4">1. 代理<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h4>
+<p>代理服务器接受客户端的请求，并且转发给其它服务器。</p>
+<p>使用代理的主要目的是：</p>
+<ul>
+<li>缓存</li>
+<li>负载均衡</li>
+<li>网络访问控制</li>
+<li>访问日志记录</li>
+</ul>
+<p>代理服务器分为正向代理和反向代理两种：</p>
+<ul>
+<li>用户察觉得到正向代理的存在。</li>
+</ul>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/a314bb79-5b18-4e63-a976-3448bffa6f1b.png" width=""/> </div>
+<p><br></p>
+<ul>
+<li>而反向代理一般位于内部网络中，用户察觉不到。</li>
+</ul>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/2d09a847-b854-439c-9198-b29c65810944.png" width=""/> </div>
+<p><br></p>
+<h4 id="2_3">2. 网关<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h4>
+<p>与代理服务器不同的是，网关服务器会将 HTTP 转化为其它协议进行通信，从而请求其它非 HTTP 服务器的服务。</p>
+<h4 id="3_2">3. 隧道<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h4>
+<p>使用 SSL 等加密手段，在客户端和服务器之间建立一条安全的通信线路。</p>
+<h2 id="https">六、HTTPS<a class="headerlink" href="#https" title="Permanent link">&para;</a></h2>
+<p>HTTP 有以下安全性问题：</p>
+<ul>
+<li>使用明文进行通信，内容可能会被窃听；</li>
+<li>不验证通信方的身份，通信方的身份有可能遭遇伪装；</li>
+<li>无法证明报文的完整性，报文有可能遭篡改。</li>
+</ul>
+<p>HTTPS 并不是新协议，而是让 HTTP 先和 SSL（Secure Sockets Layer）通信，再由 SSL 和 TCP 通信，也就是说 HTTPS 使用了隧道进行通信。</p>
+<p>通过使用 SSL，HTTPS 具有了加密（防窃听）、认证（防伪装）和完整性保护（防篡改）。</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/ssl-offloading.jpg" width="700"/> </div>
+<p><br></p>
+<h3 id="_17">加密<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h4 id="1_5">1. 对称密钥加密<a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h4>
+<p>对称密钥加密（Symmetric-Key Encryption），加密和解密使用同一密钥。</p>
+<ul>
+<li>优点：运算速度快；</li>
+<li>缺点：无法安全地将密钥传输给通信方。</li>
+</ul>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/7fffa4b8-b36d-471f-ad0c-a88ee763bb76.png" width="600"/> </div>
+<p><br></p>
+<h4 id="2_4">2.非对称密钥加密<a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h4>
+<p>非对称密钥加密，又称公开密钥加密（Public-Key Encryption），加密和解密使用不同的密钥。</p>
+<p>公开密钥所有人都可以获得，通信发送方获得接收方的公开密钥之后，就可以使用公开密钥进行加密，接收方收到通信内容后使用私有密钥解密。</p>
+<p>非对称密钥除了用来加密，还可以用来进行签名。因为私有密钥无法被其他人获取，因此通信发送方使用其私有密钥进行签名，通信接收方使用发送方的公开密钥对签名进行解密，就能判断这个签名是否正确。</p>
+<ul>
+<li>优点：可以更安全地将公开密钥传输给通信发送方；</li>
+<li>缺点：运算速度慢。</li>
+</ul>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/39ccb299-ee99-4dd1-b8b4-2f9ec9495cb4.png" width="600"/> </div>
+<p><br></p>
+<h4 id="3-https">3. HTTPS 采用的加密方式<a class="headerlink" href="#3-https" title="Permanent link">&para;</a></h4>
+<p>上面提到对称密钥加密方式的传输效率更高，但是无法安全地将密钥 Secret Key 传输给通信方。而非对称密钥加密方式可以保证传输的安全性，因此我们可以利用非对称密钥加密方式将 Secret Key  传输给通信方。HTTPS 采用混合的加密机制，正是利用了上面提到的方案：</p>
+<ul>
+<li>使用非对称密钥加密方式，传输对称密钥加密方式所需要的 Secret Key，从而保证安全性;</li>
+<li>获取到 Secret Key 后，再使用对称密钥加密方式进行通信，从而保证效率。（下图中的 Session Key 就是 Secret Key）</li>
+</ul>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/How-HTTPS-Works.png" width="600"/> </div>
+<p><br></p>
+<h3 id="_18">认证<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>通过使用   <strong>证书</strong>   来对通信方进行认证。</p>
+<p>数字证书认证机构（CA，Certificate Authority）是客户端与服务器双方都可信赖的第三方机构。</p>
+<p>服务器的运营人员向 CA 提出公开密钥的申请，CA 在判明提出申请者的身份之后，会对已申请的公开密钥做数字签名，然后分配这个已签名的公开密钥，并将该公开密钥放入公开密钥证书后绑定在一起。</p>
+<p>进行 HTTPS 通信时，服务器会把证书发送给客户端。客户端取得其中的公开密钥之后，先使用数字签名进行验证，如果验证通过，就可以开始通信了。</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/2017-06-11-ca.png" width=""/> </div>
+<p><br></p>
+<h3 id="_19">完整性保护<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>SSL 提供报文摘要功能来进行完整性保护。</p>
+<p>HTTP 也提供了 MD5 报文摘要功能，但不是安全的。例如报文内容被篡改之后，同时重新计算 MD5 的值，通信接收方是无法意识到发生了篡改。</p>
+<p>HTTPS 的报文摘要功能之所以安全，是因为它结合了加密和认证这两个操作。试想一下，加密之后的报文，遭到篡改之后，也很难重新计算报文摘要，因为无法轻易获取明文。</p>
+<h3 id="https_1">HTTPS 的缺点<a class="headerlink" href="#https_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>因为需要进行加密解密等过程，因此速度会更慢；</li>
+<li>需要支付证书授权的高额费用。</li>
+</ul>
+<h2 id="http20">七、HTTP/2.0<a class="headerlink" href="#http20" title="Permanent link">&para;</a></h2>
+<h3 id="http1x">HTTP/1.x 缺陷<a class="headerlink" href="#http1x" title="Permanent link">&para;</a></h3>
+<p>HTTP/1.x 实现简单是以牺牲性能为代价的：</p>
+<ul>
+<li>客户端需要使用多个连接才能实现并发和缩短延迟；</li>
+<li>不会压缩请求和响应首部，从而导致不必要的网络流量；</li>
+<li>不支持有效的资源优先级，致使底层 TCP 连接的利用率低下。</li>
+</ul>
+<h3 id="_20">二进制分帧层<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>HTTP/2.0 将报文分成 HEADERS 帧和 DATA 帧，它们都是二进制格式的。</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/86e6a91d-a285-447a-9345-c5484b8d0c47.png" width="400"/> </div>
+<p><br></p>
+<p>在通信过程中，只会有一个 TCP 连接存在，它承载了任意数量的双向数据流（Stream）。</p>
+<ul>
+<li>一个数据流（Stream）都有一个唯一标识符和可选的优先级信息，用于承载双向信息。</li>
+<li>消息（Message）是与逻辑请求或响应对应的完整的一系列帧。</li>
+<li>帧（Frame）是最小的通信单位，来自不同数据流的帧可以交错发送，然后再根据每个帧头的数据流标识符重新组装。</li>
+</ul>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/af198da1-2480-4043-b07f-a3b91a88b815.png" width="600"/> </div>
+<p><br></p>
+<h3 id="_21">服务端推送<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>HTTP/2.0 在客户端请求一个资源时，会把相关的资源一起发送给客户端，客户端就不需要再次发起请求了。例如客户端请求 page.html 页面，服务端就把 script.js 和 style.css 等与之相关的资源一起发给客户端。</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/e3f1657c-80fc-4dfa-9643-bf51abd201c6.png" width="800"/> </div>
+<p><br></p>
+<h3 id="_22">首部压缩<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>HTTP/1.1 的首部带有大量信息，而且每次都要重复发送。</p>
+<p>HTTP/2.0 要求客户端和服务器同时维护和更新一个包含之前见过的首部字段表，从而避免了重复传输。</p>
+<p>不仅如此，HTTP/2.0 也使用 Huffman 编码对首部字段进行压缩。</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/_u4E0B_u8F7D.png" width="600"/> </div>
+<p><br></p>
+<h2 id="http11">八、HTTP/1.1 新特性<a class="headerlink" href="#http11" title="Permanent link">&para;</a></h2>
+<p>详细内容请见上文</p>
+<ul>
+<li>默认是长连接</li>
+<li>支持流水线</li>
+<li>支持同时打开多个 TCP 连接</li>
+<li>支持虚拟主机</li>
+<li>新增状态码 100</li>
+<li>支持分块传输编码</li>
+<li>新增缓存处理指令 max-age</li>
+</ul>
+<h2 id="get-post">九、GET 和 POST 比较<a class="headerlink" href="#get-post" title="Permanent link">&para;</a></h2>
+<h3 id="_23">作用<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p>GET 用于获取资源，而 POST 用于传输实体主体。</p>
+<h3 id="_24">参数<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p>GET 和 POST 的请求都能使用额外的参数，但是 GET 的参数是以查询字符串出现在 URL 中，而 POST 的参数存储在实体主体中。不能因为 POST 参数存储在实体主体中就认为它的安全性更高，因为照样可以通过一些抓包工具（Fiddler）查看。</p>
+<p>因为 URL 只支持 ASCII 码，因此 GET 的参数中如果存在中文等字符就需要先进行编码。例如 <code>中文</code> 会转换为 <code>%E4%B8%AD%E6%96%87</code>，而空格会转换为 <code>%20</code>。POST 参数支持标准字符集。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>GET /test/demo_form.asp?name1=value1&amp;name2=value2 HTTP/1.1
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>POST /test/demo_form.asp HTTP/1.1
+Host: w3schools.com
+name1=value1&amp;name2=value2
+</code></pre></div>
+</td></tr></table>
+<h3 id="_25">安全<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>安全的 HTTP 方法不会改变服务器状态，也就是说它只是可读的。</p>
+<p>GET 方法是安全的，而 POST 却不是，因为 POST 的目的是传送实体主体内容，这个内容可能是用户上传的表单数据，上传成功之后，服务器可能把这个数据存储到数据库中，因此状态也就发生了改变。</p>
+<p>安全的方法除了 GET 之外还有：HEAD、OPTIONS。</p>
+<p>不安全的方法除了 POST 之外还有 PUT、DELETE。</p>
+<h3 id="_26">幂等性<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>幂等的 HTTP 方法，同样的请求被执行一次与连续执行多次的效果是一样的，服务器的状态也是一样的。换句话说就是，幂等方法不应该具有副作用（统计用途除外）。</p>
+<p>所有的安全方法也都是幂等的。</p>
+<p>在正确实现的条件下，GET，HEAD，PUT 和 DELETE 等方法都是幂等的，而 POST 方法不是。</p>
+<p>GET /pageX HTTP/1.1 是幂等的，连续调用多次，客户端接收到的结果都是一样的：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>GET /pageX HTTP/1.1
+GET /pageX HTTP/1.1
+GET /pageX HTTP/1.1
+GET /pageX HTTP/1.1
+</code></pre></div>
+</td></tr></table>
+<p>POST /add_row HTTP/1.1 不是幂等的，如果调用多次，就会增加多行记录：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>POST /add_row HTTP/1.1   -&gt; Adds a 1nd row
+POST /add_row HTTP/1.1   -&gt; Adds a 2nd row
+POST /add_row HTTP/1.1   -&gt; Adds a 3rd row
+</code></pre></div>
+</td></tr></table>
+<p>DELETE /idX/delete HTTP/1.1 是幂等的，即使不同的请求接收到的状态码不一样：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>DELETE /idX/delete HTTP/1.1   -&gt; Returns 200 if idX exists
+DELETE /idX/delete HTTP/1.1   -&gt; Returns 404 as it just got deleted
+DELETE /idX/delete HTTP/1.1   -&gt; Returns 404
+</code></pre></div>
+</td></tr></table>
+<h3 id="_27">可缓存<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p>如果要对响应进行缓存，需要满足以下条件：</p>
+<ul>
+<li>请求报文的 HTTP 方法本身是可缓存的，包括 GET 和 HEAD，但是 PUT 和 DELETE 不可缓存，POST 在多数情况下不可缓存的。</li>
+<li>响应报文的状态码是可缓存的，包括：200, 203, 204, 206, 300, 301, 404, 405, 410, 414, and 501。</li>
+<li>响应报文的 Cache-Control 首部字段没有指定不进行缓存。</li>
+</ul>
+<h3 id="xmlhttprequest">XMLHttpRequest<a class="headerlink" href="#xmlhttprequest" title="Permanent link">&para;</a></h3>
+<p>为了阐述 POST 和 GET 的另一个区别，需要先了解 XMLHttpRequest：</p>
+<blockquote>
+<p>XMLHttpRequest 是一个 API，它为客户端提供了在客户端和服务器之间传输数据的功能。它提供了一个通过 URL 来获取数据的简单方式，并且不会使整个页面刷新。这使得网页只更新一部分页面而不会打扰到用户。XMLHttpRequest 在 AJAX 中被大量使用。</p>
+</blockquote>
+<ul>
+<li>在使用 XMLHttpRequest 的 POST 方法时，浏览器会先发送 Header 再发送 Data。但并不是所有浏览器会这么做，例如火狐就不会。</li>
+<li>而 GET 方法 Header 和 Data 会一起发送。</li>
+</ul>
+<h2 id="_28">参考资料<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
+<ul>
+<li>上野宣. 图解 HTTP[M]. 人民邮电出版社, 2014.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">MDN : HTTP</a></li>
+<li><a href="https://developers.google.com/web/fundamentals/performance/http2/?hl=zh-cn">HTTP/2 简介</a></li>
+<li><a href="http://php.net/manual/zh/function.htmlspecialchars.php">htmlspecialchars</a></li>
+<li><a href="http://java2db.com/java-io/how-to-get-and-the-difference-between-file-uri-and-url-in-java">Difference between file URI and URL in java</a></li>
+<li><a href="https://software-security.sans.org/developer-how-to/fix-sql-injection-in-java-using-prepared-callable-statement">How to Fix SQL Injection Using Java PreparedStatement &amp; CallableStatement</a></li>
+<li><a href="https://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html">浅谈 HTTP 中 Get 与 Post 的区别</a></li>
+<li><a href="https://www.webdancers.com/are-http-and-www-necesary/">Are http:// and www really necessary?</a></li>
+<li><a href="https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html">HTTP (HyperText Transfer Protocol)</a></li>
+<li><a href="https://www.igvita.com/2011/12/01/web-vpn-secure-proxies-with-spdy-chrome/">Web-VPN: Secure Proxies with SPDY &amp; Chrome</a></li>
+<li><a href="http://en.wikipedia.org/wiki/File:HTTP_persistent_connection.svg">File:HTTP persistent connection.svg</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Proxy_server">Proxy server</a></li>
+<li><a href="https://www.x-cart.com/blog/what-is-https-and-ssl.html">What Is This HTTPS/SSL Thing And Why Should You Care?</a></li>
+<li><a href="https://securebox.comodo.com/ssl-sniffing/ssl-offloading/">What is SSL Offloading?</a></li>
+<li><a href="https://docs.oracle.com/cd/E19424-01/820-4811/6ng8i26bn/index.html">Sun Directory Server Enterprise Edition 7.0 Reference - Key Encryption</a></li>
+<li><a href="https://www.codeproject.com/Articles/326574/An-Introduction-to-Mutual-SSL-Authentication">An Introduction to Mutual SSL Authentication</a></li>
+<li><a href="https://danielmiessler.com/study/url-uri/">The Difference Between URLs and URIs</a></li>
+<li><a href="https://juejin.im/entry/5766c29d6be3ff006a31b84e#comment">Cookie 与 Session 的区别</a></li>
+<li><a href="https://www.zhihu.com/question/19786827">COOKIE 和 SESSION 有什么区别</a></li>
+<li><a href="https://harttle.land/2015/08/10/cookie-session.html">Cookie/Session 的机制与安全</a></li>
+<li><a href="https://shijianan.com/2017/06/11/https/">HTTPS 证书原理</a></li>
+<li><a href="https://stackoverflow.com/questions/176264/what-is-the-difference-between-a-uri-a-url-and-a-urn">What is the difference between a URI, a URL and a URN?</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a></li>
+<li><a href="https://blog.josephscott.org/2009/08/27/xmlhttprequest-xhr-uses-multiple-packets-for-http-post/">XMLHttpRequest (XHR) Uses Multiple Packets for HTTP POST?</a></li>
+<li><a href="https://www.ssl2buy.com/wiki/symmetric-vs-asymmetric-encryption-what-are-differences">Symmetric vs. Asymmetric Encryption – What are differences?</a></li>
+<li><a href="https://www.kancloud.cn/digest/web-performance-http2">Web 性能优化与 HTTP/2</a></li>
+<li><a href="https://developers.google.com/web/fundamentals/performance/http2/?hl=zh-cn">HTTP/2 简介</a></li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月29日 00:50:03</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年2月29日 00:50:03</span>
+      
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../Git/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Git" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Git
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Java%20IO/" class="md-footer__link md-footer__link--next" aria-label="下一页: Java IO" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              Java IO
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 | Xingding Luo
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/luoxding" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    <a href="mailto:anthony_lambert@live.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m511.6 36.86-64 415.1a32.008 32.008 0 0 1-31.65 27.147c-4.188 0-8.319-.815-12.29-2.472l-122.6-51.1-50.86 76.29C226.3 508.5 219.8 512 212.8 512c-11.5 0-20.8-9.3-20.8-20.8v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96 122.3 360.3 19.69 317.5C8.438 312.8.812 302.2.062 289.1s5.47-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.748e2769.min.js"></script>
+      
+        <script src="../../../_static/js/extra.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
