@@ -4,7 +4,7 @@ site_description: studyRepo学习笔记
 site_author: 罗兴定
 site_url: https://luoxding.github.io/notes/
 # Copyright
-copyright: Copyright &copy; 2024 | Xingding Luo
+copyright: Copyright &copy; 2022 | Xingding Luo
 
 repo_name: 'notes'
 repo_url: 'https://github.com/luoxding/notes'
@@ -14,10 +14,8 @@ theme:
   features:
     # - navigation.instant
     - navigation.sections
-    - navigation.tabs # nav top目录显示在标题栏
-    - navigation.top # 一键回顶 top
-    - content.code.copy # 代码复制按钮
-    - content.code.annotate
+    - navigation.tabs
+    - navigation.top
   language: 'zh'
   font:
    #text: 'Fira Sans'
@@ -50,22 +48,6 @@ theme:
   # Don't include MkDocs' JavaScript.
   include_search_page: false
   search_index_only: true
-
-  highlightjs: true
-  hljs_languages:
-    - yaml
-    - rust
-    - bash
-    - latex
-    - html
-
-# 页面快捷键
-  shortcuts:
-      help: 72    # ?
-      next: 78     # n
-      previous: 80 # p
-      search: 83   # s
-
 
 
 # Customization
