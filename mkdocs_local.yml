@@ -1,21 +1,25 @@
-site_name: 我的笔记
+site_name: wiki笔记
 site_description: studyRepo学习笔记
 # site_author: Xingding Luo
 site_author: 罗兴定
-site_url: https://luoxding.github.io/notes/
+#site_url: https://luoxding.github.io/notes/
 # Copyright
-copyright: Copyright &copy; 2022 | Xingding Luo
+copyright: Copyright &copy; 2024 | Xingding Luo
 
-repo_name: 'notes'
-repo_url: 'https://github.com/luoxding/notes'
+#repo_name: 'notes'
+#repo_url: 'https://github.com/luoxding/notes'
 
 theme: 
   name: material
   features:
-    # - navigation.instant
+    - navigation.instant
+    - navigation.path # path
     - navigation.sections
-    - navigation.tabs
-    - navigation.top
+    - navigation.tabs # nav top目录显示在标题栏
+    - navigation.top # 一键回顶 top
+    - content.code.copy # 代码复制按钮
+    - toc.integrate
+    - content.code.annotate
   language: 'zh'
   font:
    #text: 'Fira Sans'
@@ -26,8 +30,8 @@ theme:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: deep orange
+      primary: pink #white
+      accent: pink
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
@@ -48,6 +52,22 @@ theme:
   # Don't include MkDocs' JavaScript.
   include_search_page: false
   search_index_only: true
+
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - rust
+    - bash
+    - latex
+    - html
+
+# 页面快捷键
+  shortcuts:
+      help: 72    # ?
+      next: 78     # n
+      previous: 80 # p
+      search: 83   # s
+
 
 
 # Customization
@@ -70,7 +90,7 @@ extra_javascript:
 extra_css:
   - '_static/css/extra.css?v=13'
   
-# Extensions
+# Extensions begin #############################################################################################################################################
 markdown_extensions:
   - admonition
   - abbr
@@ -109,11 +129,12 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+# Extensions begin #############################################################################################################################################
 
-plugins:
-  - git-revision-date-localized
-  - git-revision-date
-  - search
+#plugins:
+#  - git-revision-date-localized
+#  - git-revision-date
+#  - search
 
 plugins:
   - search:
@@ -127,6 +148,14 @@ plugins:
       locale: zh
   - git-revision-date:
       enabled_if_env: CI
-#av:
+#  - literate-nav:
+  - literate-nav:
+      nav_file: SUMMARY.md
+#nav:
 #   - Home: index.md
 #   - About: about.md
+#nav:
+#  - Frob: index.md
+#  - Baz: about.md
+#  - Borgs: forward/
+

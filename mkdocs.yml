@@ -12,24 +12,26 @@ repo_url: 'https://github.com/luoxding/notes'
 theme: 
   name: material
   features:
-    # - navigation.instant
+    - navigation.instant
     - navigation.sections
     - navigation.tabs # nav top目录显示在标题栏
     - navigation.top # 一键回顶 top
+    - navigation.path # path
     - content.code.copy # 代码复制按钮
     - content.code.annotate
+    - toc.integrate
   language: 'zh'
   font:
    #text: 'Fira Sans'
-    text: 'Noto Serif CJK SC'
+    text: 'Noto Sans CJK SC'
     code: 'Fira Mono'
  #palette:
   palette: 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: deep orange
+      primary: pink
+      accent: pink
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
@@ -37,8 +39,8 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: black
-      accent: green
+      primary: amber
+      accent: amber
       toggle:
         icon: material/weather-night
         name: Switch to light mode
