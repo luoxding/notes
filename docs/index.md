@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # HOME
 
 # 这是首页 index

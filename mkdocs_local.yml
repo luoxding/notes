@@ -18,7 +18,8 @@ theme:
     - navigation.tabs # nav top目录显示在标题栏
     - navigation.top # 一键回顶 top
     - content.code.copy # 代码复制按钮
-    - toc.integrate
+    - toc.integrate #目录放到左侧导航栏，以加宽阅读页面
+    - navigation.indexes
     - content.code.annotate
   language: 'zh'
   font:
@@ -45,8 +46,10 @@ theme:
         icon: material/weather-night
         name: Switch to light mode
 
-  icon:
-    logo: logo
+#  icon:
+  logo: figures/chapter_divide_and_conquer.png
+  favicon: assets/linux.png
+
     #logo: fontawesome/brands/suse
    #logo: material/library
   # Don't include MkDocs' JavaScript.
@@ -82,6 +85,7 @@ extra:
       link: https://github.com/luoxding
     - icon: fontawesome/solid/paper-plane
       link: mailto:anthony_lambert@live.com
+  generator: false #清除商标
 
 extra_javascript:
   - '_static/js/extra.js'
@@ -137,6 +141,19 @@ markdown_extensions:
 #  - search
 
 plugins:
+  - blog:
+      blog_dir: blog
+      blog_toc: true
+      authors: true
+      post_date_format: full # 日期格式 2024 年 1 月 31 日星期一
+      authors_file: blog/.authors.yml
+      archive_name: Archive
+      archive_date_format: yyyy
+      archive_url_date_format: yyyy
+      archive_url_format: "archive/{date}"
+      categories_name: 分类
+      pagination_format: "$link_first $link_previous ~2~ $link_next $link_last"
+
   - search:
       lang: ja
       prebuild_index: true
@@ -158,4 +175,10 @@ plugins:
 #  - Frob: index.md
 #  - Baz: about.md
 #  - Borgs: forward/
-
+#  - Generating Documentation: developerGuide/GeneratingDocs.md
+#  - Blog:
+#    - blog/index.md
+#  - Extras:
+#    - Overview: Links.md
+#    - Attributions: Attributions.md
+#    - Code Reference: reference/

@@ -1,0 +1,152 @@
+site_name: 我的笔记
+site_description: studyRepo学习笔记
+# site_author: Xingding Luo
+site_author: 罗兴定
+site_url: https://luoxding.github.io/notes/
+# Copyright
+copyright: Copyright &copy; 2024 | Xingding Luo
+
+repo_name: 'notes'
+repo_url: 'https://github.com/luoxding/notes'
+
+theme: 
+  name: material
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.tabs # nav top目录显示在标题栏
+    - navigation.top # 一键回顶 top
+    - navigation.path # path
+    - content.code.copy # 代码复制按钮
+    - content.code.annotate
+    - toc.integrate
+  language: 'zh'
+  font:
+   #text: 'Fira Sans'
+    text: 'Noto Sans CJK SC'
+    code: 'Fira Mono'
+ #palette:
+  palette: 
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: pink
+      accent: pink
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: amber
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
+  icon:
+    logo: logo
+    #logo: fontawesome/brands/suse
+   #logo: material/library
+  # Don't include MkDocs' JavaScript.
+  include_search_page: false
+  search_index_only: true
+
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - rust
+    - bash
+    - latex
+    - html
+
+# 页面快捷键
+  shortcuts:
+      help: 72    # ?
+      next: 78     # n
+      previous: 80 # p
+      search: 83   # s
+
+
+
+# Customization
+extra:
+  search:
+    language: 'jp'
+  pagetime: 'on'
+  manifest: 'manifest.webmanifest'
+  githash: ''
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/luoxding
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:anthony_lambert@live.com
+
+extra_javascript:
+  - '_static/js/extra.js'
+  - 'https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'
+
+extra_css:
+  - '_static/css/extra.css?v=13'
+  
+# Extensions
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - admonition
+  - codehilite:
+      guess_lang: false
+      linenums: true
+  - def_list
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.progressbar
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: math
+          class: arithmatex
+          format: !!python/name:pymdownx.arithmatex.fence_mathjax_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+plugins:
+  - git-revision-date-localized
+  - git-revision-date
+  - search
+
+plugins:
+  - search:
+      lang: ja
+      prebuild_index: true
+  - git-revision-date-localized:
+      type: datetime
+      enable_creation_date: true
+      fallback_to_build_date: true
+      timezone: Asia/Shanghai
+      locale: zh
+  - git-revision-date:
+      enabled_if_env: CI
+#av:
+#   - Home: index.md
+#   - About: about.md
