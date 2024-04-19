@@ -2,127 +2,137 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://luoxding.github.io/notes/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/SUMMARY/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/about/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/blog/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/blog/2023/04/06/april-2023---status-update/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/blog/2023/12/18/a-retrodeck-doomy-december/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/blog/2023/06/01/june-2023---status-update/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/blog/2023/03/05/march-2023---status-update/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/blog/2023/05/03/may-2023---status-update/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/blog/2023/11/23/november-2023---status-update/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/blog/2023/10/13/october-2023---status-update/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/blog/2023/09/14/september-2023---status-update/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/blog/2024/02/23/february-2024-080b-progress/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/blog/2024/01/24/january-2024-a-new-year-of-retrodeck/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/blog/2024/03/04/march-2024-tiny-update---yuzu-removal/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/extras/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://luoxding.github.io/notes/reference/</loc>
+         <lastmod>2024-04-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://luoxding.github.io/notes/reference/book/</loc>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/software/steamdeck-optimize/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/software/steamdeck-software/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/software/steamdeck-start/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/system/contibute-rd/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/system/discord/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/system/lemmy-reddit/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/blog/archive/2024/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/blog/archive/2023/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://luoxding.github.io/notes/blog/page/2/</loc>
-         <lastmod>2024-04-12</lastmod>
+         <lastmod>2024-04-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
