@@ -1,0 +1,1 @@
+docker run -it --name mkdocs --rm -v D:\github\MyRep\notes:/docs -p 8000:8000 --workdir /docs mdos:v1.0 build -f local.mkdocs.yml

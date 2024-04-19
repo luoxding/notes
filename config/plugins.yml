@@ -1,0 +1,46 @@
+plugins:
+  - blog:
+      blog_dir: blog
+      blog_toc: true
+      authors: true
+      post_date_format: medium # 日期格式 2024 年 1 月 31 日星期一
+      authors_file: blog/.authors.yml
+      archive_name: Archive
+      archive_date_format: yyyy
+      archive_url_date_format: yyyy
+      archive_url_format: "archive/{date}"
+      categories_name: 分类
+      pagination_format: "$link_first $link_previous ~2~ $link_next $link_last"
+
+    # 搜索插件
+  - search:
+      lang: zh
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  # 压缩html
+  # - minify:
+  #     minify_html: true
+  #  - markdownextradata:
+  #      data: data
+  # 自动生成导航栏
+  # - awesome-pages
+  # - search:
+  #     lang: ja
+  #     prebuild_index: true
+  # - git-revision-date-localized: #这两插件github pages才用
+  #     type: datetime
+  #     enable_creation_date: true
+  #     fallback_to_build_date: true
+  #     timezone: Asia/Shanghai
+  #     locale: zh
+  # - git-revision-date:
+  #     enabled_if_env: CI
+  - literate-nav
+#      nav_file: SUMMARY.md
+
+
+
+
+
+
+
+# mod-log: 2024-04-13_04:28

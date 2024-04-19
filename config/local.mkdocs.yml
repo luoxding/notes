@@ -1,27 +1,28 @@
-INHERIT: docs/navigation.yml
-
 site_name: wiki笔记
 site_description: studyRepo学习笔记
 # site_author: Xingding Luo
 site_author: 罗兴定
-site_url: https://luoxding.github.io/notes/
+#site_url: https://luoxding.github.io/notes/
 # Copyright
-copyright: Copyright &copy; 2024 | Xingding Luo
+# copyright: Copyright &copy; 2024 | Xingding Luo
 
 #repo_name: 'notes'
 #repo_url: 'https://github.com/luoxding/notes'
+docs_dir: ../docs
+site_dir: ../site
 
-theme: 
+theme:
   name: material
   features:
-    - navigation.instant
-    - navigation.path # path
-    - navigation.sections
+    - navigation.instant # 即时加载
+    - navigation.path # path 内测版才能用
+    - navigation.sections # 导航栏显示章节
     - navigation.tabs # nav top目录显示在标题栏
+    - navigation.tabs.sticky # 导航标签将锁定在页眉下面，并且在向下滚动时始终保持可见。
     - navigation.top # 一键回顶 top
     - content.code.copy # 代码复制按钮
-    - toc.integrate #目录放到左侧导航栏，以加宽阅读页面
-    - navigation.indexes
+    # - toc.integrate #目录放到左侧导航栏，以加宽阅读页面
+    - navigation.indexes # 章节索引
     - content.code.annotate
     - search.highlight # 搜索高亮
     - search.share # 搜索共享
@@ -31,10 +32,10 @@ theme:
   language: 'zh'
   font:
    #text: 'Fira Sans'
-    text: 'Noto Serif CJK SC'
+    text: 'Noto Sans CJK SC' #Noto Serif CJK SC
     code: 'Fira Mono'
  #palette:
-  palette: 
+  palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -48,7 +49,7 @@ theme:
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
-      accent: green
+      accent: pink
       toggle:
         icon: material/weather-night
         name: Switch to light mode
@@ -87,11 +88,11 @@ extra:
   pagetime: 'on'
   manifest: 'manifest.webmanifest'
   githash: ''
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/luoxding
-    - icon: fontawesome/solid/paper-plane
-      link: mailto:anthony_lambert@live.com
+  # social:
+  #   - icon: fontawesome/brands/github
+  #     link: https://github.com/luoxding
+  #   - icon: fontawesome/solid/paper-plane
+  #     link: mailto:anthony_lambert@live.com
   # generator: false #清除商标
 
 extra_javascript:
@@ -100,7 +101,7 @@ extra_javascript:
 
 extra_css:
   - '_static/css/extra.css?v=13'
-  
+
 # Extensions begin #############################################################################################################################################
 markdown_extensions:
   - admonition
@@ -148,7 +149,7 @@ plugins:
       blog_dir: blog
       blog_toc: true
       authors: true
-      post_date_format: full # 日期格式 2024 年 1 月 31 日星期一
+      post_date_format: medium # 日期格式 2024 年 1 月 31 日星期一
       authors_file: blog/.authors.yml
       archive_name: Archive
       archive_date_format: yyyy
@@ -157,19 +158,35 @@ plugins:
       categories_name: 分类
       pagination_format: "$link_first $link_previous ~2~ $link_next $link_last"
 
+    # 搜索插件
   - search:
-      lang: ja
-      prebuild_index: true
-  - git-revision-date-localized:
-      type: datetime
-      enable_creation_date: true
-      fallback_to_build_date: true
-      timezone: Asia/Shanghai
-      locale: zh
-  - git-revision-date:
-      enabled_if_env: CI
+      lang: zh
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  # 压缩html
+  # - minify:
+  #     minify_html: true
+  #  - markdownextradata:
+  #      data: data
+  # 自动生成导航栏
+  # - awesome-pages
+  # - search:
+  #     lang: ja
+  #     prebuild_index: true
+  # - git-revision-date-localized: #这两插件github pages才用
+  #     type: datetime
+  #     enable_creation_date: true
+  #     fallback_to_build_date: true
+  #     timezone: Asia/Shanghai
+  #     locale: zh
+  # - git-revision-date:
+  #     enabled_if_env: CI
   - literate-nav
-  
+#      nav_file: SUMMARY.md
+
+INHERIT: ../docs/navigation.yml
+
+
+
 
 
 # mod-log: 2024-04-13_04:28

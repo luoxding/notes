@@ -1,5 +1,48 @@
 # 使用说明
 
+## 数据路径
+- 笔记本[windows]: `D:\github\MyRep\notes`
+
+
+docker run -it --name mkdocs --rm -v ./:/docs -p 58000:8000 --workdir /docs mdos:v1.0 serve -a 0.0.0.0:8000
+docker run --rm -it --name mkdocs -p 8000:8000 -v ${PWD}/docs:/docs mdos:v1.0
+
+https://blog.csdn.net/geol200709/article/details/83413123
+
+`docker run -it --rm -v ~/docs:/docs squidfunk/mkdocs-material new my-project`
+
+`docker run -it --name mkdocs --rm -v ~/docs:/docs -p 58000:8000 --workdir /docs/my-project squidfunk/mkdocs-material serve -a 0.0.0.0:8000`
+
+docker run -it --rm -v ${PWD}:/docs mdos:v1.0 new .
+docker run -it --name mkdocs --rm -v ${PWD}:/docs -p 58000:8000 --workdir /docs mdos:v1.0 serve -a 0.0.0.0:8000
+
+winpty docker run -it --rm -v /d/github/MyRep/notes:/docs mdos:v1.0 new .
+winpty docker run -it --name mkdocs --rm -v /d/github/MyRep/notes:/docs -p 58000:8000 --workdir /docs mdos:v1.0 serve -a 0.0.0.0:8000
+
+
+$absolutePath = Convert-Path .
+winpty docker run -it --name mkdocs --rm -v ${absolutePath}:/docs -p 58000:8000 --workdir /docs mdos:v1.0 serve -a 0.0.0.0:8000
+
+`Convert-Path .` 获取windows的绝对路径
+
+PS C:\Users\admin> Convert-Path .
+C:\Users\admin
+PS C:\Users\admin>
+
+D:\github\MyRep\notes
+D:\github\MyRep\notes\site
+
+D:/github/MyRep/notes
+
+- powershell 要用绝对路径
+docker run -it --rm -v D:\github\MyRep\notes:/docs mdos:v1.0 new .
+docker run -it --name mkdocs --rm -v D:\github\MyRep\notes:/docs -p 58000:8000 --workdir /docs mdos:v1.0 serve -a 0.0.0.0:8000
+
+
+docker run -it --name mkdocs --rm -v D:/github/MyRep/notes:/docs -p 8000:8000 --workdir /docs mdos:v1.0 serve
+docker run -it --name mkdocs --rm -v D:\github\MyRep\notes:/docs -p 8000:8000 --workdir /docs mdos:v1.0 serve
+
+
 开启服务
 
 ```shell
