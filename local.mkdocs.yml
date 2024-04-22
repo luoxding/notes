@@ -17,11 +17,11 @@ theme:
     - navigation.path # path 内测版才能用
     - navigation.sections # 导航栏显示章节
     - navigation.tabs # nav top目录显示在标题栏
-    - navigation.tabs.sticky # 导航标签将锁定在页眉下面，并且在向下滚动时始终保持可见。
+    # - navigation.tabs.sticky # 导航标签将锁定在页眉下面，并且在向下滚动时始终保持可见。
     - navigation.top # 一键回顶 top
     - content.code.copy # 代码复制按钮
     # - toc.integrate #目录放到左侧导航栏，以加宽阅读页面
-    - navigation.indexes # 章节索引
+    # - navigation.indexes # 章节索引，这要求每个目录下有index.md文件
     - content.code.annotate
     - search.highlight # 搜索高亮
     - search.share # 搜索共享
@@ -38,7 +38,7 @@ theme:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: white #white
+      primary: black #white
       accent: pink
       toggle:
         icon: material/weather-sunny
@@ -48,7 +48,7 @@ theme:
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
-      accent: pink
+      accent: red
       toggle:
         icon: material/weather-night
         name: Switch to light mode
@@ -95,11 +95,11 @@ extra:
   # generator: false #清除商标
 
 extra_javascript:
-  - '_static/js/extra.js'
+  # - '_static/js/extra.js'
   - 'https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'
 
-extra_css:
-  - '_static/css/extra.css?v=13'
+# extra_css:
+#   - '_static/css/extra.css?v=13'
 
 # Extensions begin #############################################################################################################################################
 markdown_extensions:
@@ -182,15 +182,4 @@ plugins:
   - literate-nav
 #      nav_file: SUMMARY.md
 
-
-
-
-
-
-
-# mod-log: 2024-04-13_04:28
-
-# ================================
-
-# INHERIT: config/common.mkdocs.yml
 INHERIT: docs/navigation.yml

@@ -1,9 +1,56 @@
 ---
-title: 资料链接
 date: 2024-04-22
 ---
 
-# 大纲
+https://babudiu.com/archives/typora/
+
+## Typora 最后的免费版全平台(Win Mac Linux)下载
+
+
+下载地址
+Windows
+
+0.11.18 版本 下载地址：https://github.com/iuxt/src/releases/download/2.0/typora-0-11-18.exe  0.11.18版本现在被远程施法了，会提示过期无法使用,可以使用0.9.96版
+
+0.9.96 版 下载地址：https://github.com/iuxt/src/releases/download/2.0/typora-setup-x64_0.9.96.exe
+Mac
+
+下载地址： https://github.com/iuxt/src/releases/download/2.0/typora-0-11-18.dmg
+Ubuntu（debian系）
+
+下载地址：https://github.com/iuxt/src/releases/download/2.0/Typora_Linux_0.11.18_amd64.deb
+
+ubuntu安装方法：sudo apt install ./Typora_Linux_0.11.18_amd64.deb
+其他Linux用户（非debian系）
+
+下载地址：https://github.com/iuxt/src/releases/download/2.0/typora-0-11-18.tar.gz
+Linux包安装方法
+
+安装方法:先解压tar xf typora-0-11-18.tar.gz -C /opt/
+
+创建桌面文件和图标
+
+vim ~/.local/share/applications/typora.desktop
+
+[Desktop Entry] 
+Name=Typora 
+Comment=A minimal Markdown reading & writing app. Change Log: (https://typora.io/windows/dev_release.html) 
+GenericName=Markdown Editor 
+Exec=/opt/typora/Typora Icon=/opt/typora/resources/assets/icon/icon_256x256@2x.png
+Type=Application 
+Categories=Office;WordProcessor;Development;
+MimeType=text/markdown;text/x-markdown;
+
+Typora 是什么？
+
+Typora 是一款支持实时预览的 Markdown 文本编辑器。它有 OS X、Windows、Linux 三个平台的版本，并且由于仍在测试中，是完全免费的。
+
+在这篇文章中，我希望以「Typora 是什么」这个问题为线索，向大家全面介绍这款令人爱不释手的笔记应用。
+一个 Markdown 文本编辑器
+
+Typora 首先是一个 Markdown 文本编辑器，它支持且仅支持 Markdown 语法的文本编辑。在 Typora 官网 上他们将 Typora 描述为 「A truly minimal markdown editor. 」。
+Typora 最后的免费版全平台(Win Mac Linux)下载
+
 
 我们的人生应该真正放下的什么？
 
@@ -60,7 +107,7 @@ date: 2024-04-22
 要想摆脱这种束缚，你需要足够的勇气去面对自己内心的恐惧和不安，以及足够的决心去改变自己的思维模式和行为习惯。只有敢于正视自己的缺陷和错误，才能够真正实现自我成长和提升。
 
 另外说一说害怕别人眼光这件事。
- 
+
 
 很多蠢货就是：
 

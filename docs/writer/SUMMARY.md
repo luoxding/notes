@@ -1,9 +1,11 @@
 ---
-title: 资料链接
-date: 2024-04-22
+hide:
+  - navigation
+search:
+  exclude: true
 ---
 
-# 大纲
+# Sitemap
 
 我们的人生应该真正放下的什么？
 

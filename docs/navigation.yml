@@ -1,15 +1,30 @@
 
 nav:
-    - 关于: index.md
+    # - 关于: index.md
     - 博客: blog/index.md
     - 软件应用: ./software/
+    - 硬件设备: ./hardware/
     - 系统配置: ./system/
-    - 生活随笔: ./extras/index.md
-    - 参考资料: 
-        - ./reference/index.md
-        - ./reference/book.md
+    - 笔记工具: ./writer/
+        # - LaTeX资料: ./writer/latex/
+    - 杂记随笔: ./extras/
+    - 参考资料: ./reference/
 
 
 
+    # # - 关于: index.md
+    # - 博客: blog/index.md
+    # - 软件应用: 
+    #     - ./software/
+    # - 硬件设备:
+    #     - ./hardware/
+    # - 系统配置: 
+    #     - ./system/
+    # - 笔记工具:
+    #     - ./writer/
+    # - 杂记随笔: 
+    #     - ./extras/
+    # - 参考资料: 
+    #     - ./reference/
 
 

@@ -1,6 +1,6 @@
 # How do I install RetroDECK on the Steam Deck?
 
-<img src="../../../wiki_images/logos/steam-deck-logo.png" width="150">
+
 
 ## Quickstart guide
 
@@ -18,11 +18,6 @@
 - Launch RetroDECK and enjoy
 
 ## Other quick tips
-
-- Read up on the [Steam Deck - Controller](../../wiki_controllers/steam/steamdeck-neptune-controller.md) to ease your navigation (controller layout required).
-- Read up on the [EmulationStation DE: User Guide](../../wiki_es_de/esde-guide.md).
-- Check out our other software recommendations for the Steam Deck [Steam Deck - Software Recommendations](../../wiki_devices/steamdeck/steamdeck-software.md).
-- Check various optional optimizations that can make some emulators run even better [Steam Deck - Optimizations](../../wiki_devices/steamdeck/steamdeck-optimize.md).
 
 
 ## Full step by step guide
@@ -54,15 +49,11 @@ Then `Tools` - `Install: RetroDECK Controller Layouts`.
 - Go into `Controller Layouts` and press `Templates`
 - Add one of the layouts for RetroDECK called `RetroDECK: Steam Deck - Neptune` SIMPLE or FULL with a version number.
 - You can now use RetroDECK and it's ready to populate with ROMS.
-- If you are unsure on how to add ROMS and BIOS to RetroDECK follow the [Start using RetroDECK](../../wiki_general/retrodeck-start.md)
+
 
 ### Step 4 (Optional): Extras
 
 - Get RetroDECK Steam Grid art with BoilR or add it manually from [SteamgridDB](https://www.steamgriddb.com/search/grids?term=RetroDeck) for the Steam Grid.
-- Read up on the [Steam Deck - Controller](../../wiki_controllers/steam/steamdeck-neptune-controller.md) to ease your navigation.
-- Read up on the [ES DE: User Guide](../../wiki_es_de/esde-guide.md)
-- Check out our other software recommendations for the Steam Deck [Steam Deck - Software Recommendations](../../wiki_devices/steamdeck/steamdeck-software.md).
-- Check various optional optimizations that can make some emulators run even better [Steam Deck - Optimizations](../../wiki_devices/steamdeck/steamdeck-optimize.md).
 
 
 ## How do I update RetroDECK on the Steam Deck?
@@ -76,5 +67,5 @@ Then `Tools` - `Install: RetroDECK Controller Layouts`.
 
 ### Decky: AutoFlatpaks
 If you have Decky installed and the AutoFlatpaks plugin. You can update RetroDECK from gamemode. <br>
-Read more here: [Steam Deck - Software Recommendations](../../wiki_devices/steamdeck/steamdeck-software.md).
+
 
